@@ -3,6 +3,7 @@ import Link from "next/link";
 import logo from "/public/logo.svg";
 import Head from "next/head";
 import styles from "@/styles/login.module.css";
+import biglogo from "/public/biglogo.svg";
 
 export default function Login() {
     return (
@@ -32,6 +33,7 @@ export default function Login() {
                     </div>
                 </header>
                 <div className= {styles.contenedor_principal}>
+                    <Image src={biglogo} alt="Tec Overflow" height={700} className={styles.Image}/>
                     <div className={styles.container}>
                         <h1 className={styles.h1}>Iniciar sesión</h1>
                         <br/>
@@ -43,16 +45,16 @@ export default function Login() {
                             <label className={styles.label}>Contraseña</label>
                             <input type="password" name="password" placeholder="Ingresa tu contraseña" className={styles.input}/>
                         </div>
-                        <div>
-                            <Link href="#" className={styles.olvide_link}>¿Olvidaste tu contraseña?</Link>
-                        </div>
+                        <Link href="#" className={styles.olvide_link}>¿Olvidaste tu contraseña?</Link>
                         <br/>
                         <br/>
                         <button className={styles.button}>Iniciar sesión</button>
                         <label className={styles.no_cuenta}>¿No tienes una cuenta?<Link href="#" className={styles.registrate}> Registrate</Link></label>
                     </div>
+                    <Image src={biglogo} alt="Tec Overflow" height={700} className={styles.imagen_rotada}/>
                 </div>
             </main>
         </> 
     );
 }
+

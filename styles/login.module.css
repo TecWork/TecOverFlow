@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap');
+
 .contenedor_principal{
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin-top: 5%;
+    justify-content: space-between;
 }
 
 .container{
@@ -64,7 +65,6 @@
 .olvide_link{
     font-weight: 300;
     font-size: 14px;
-    margin-top: 15px;
     padding-left: 140px;
 }
 
@@ -75,4 +75,8 @@
 
 .active{
     border-bottom: solid 4px red;
+}
+
+.imagen_rotada{
+    transform: rotateY(180deg);
 }
