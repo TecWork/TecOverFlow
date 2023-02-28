@@ -4,6 +4,7 @@ import logo from "/public/logo.svg";
 import Head from "next/head";
 import styles from "@/styles/login.module.css";
 import biglogo from "/public/biglogo.svg";
+import Script from "next/script";
 
 export default function Login() {
     return (
@@ -13,46 +14,71 @@ export default function Login() {
                     <title>Tec Overflow | Log in</title>
                 </Head>
                 <header>
-                    <div className="navbar">
-                        <div className='navegacion'>
-                            <div className="nav-logo">
-                                <Link href="/pages/index.js">
-                                    <Image src={logo} alt="Tec Overflow" width={100} height={100} />
-                                </Link>
-                                <h1 className="titulo">Tec Overflow</h1>
-                            </div>
-                            <div className="nav">
-                                <div className="link">
-                                    <Link href="/login" className={styles.active}>Log in</Link>
-                                </div>
-                                <div className="link">
-                                    <Link href="/">Sign up</Link>
-                                </div>
-                            </div>
+                    <nav className='navbar ml-20 mr-20 px-5 mt-10'>
+                        <div className='navbar-brand'>
+                            <Link className='nav-link' href='/'>
+                            <Image className='logo' src={logo} alt='Tec OverFlow'/>
+                            <h1 className='mx-7 titulo'>Tec OverFlow</h1>
+                            </Link>
+                            <ul className='nav-link'>
+                                <li className='nav-item'>
+                                    <Link className={styles.active} href='/'>Log In</Link>
+                                </li>
+                                <li className='nav-item'>
+                                    <Link className='nav-item' href='/'>Sign Up</Link>
+                                </li>
+                            </ul>
                         </div>
-                    </div>
+                    </nav>
                 </header>
+                <div id={styles.toast}></div>
                 <div className= {styles.contenedor_principal}>
-                    <Image src={biglogo} alt="Tec Overflow" height={700} className={styles.Image}/>
+                   {/*  <Image src={biglogo} alt="Tec Overflow" height={700} className={styles.Image}/> */}
                     <div className={styles.container}>
                         <h1 className={styles.h1}>Iniciar sesión</h1>
                         <br/>
                         <div className={styles.form}>
                             <label className={styles.label}>Correo electrónico</label>
-                            <input type="email" name="email" placeholder="Ingresa tu email" className={styles.input}/>
+                            <input id='input1' type="email" name="email" placeholder="Ingresa tu email" className={styles.input}/>
                             <br/>
                             <br/>
                             <label className={styles.label}>Contraseña</label>
-                            <input type="password" name="password" placeholder="Ingresa tu contraseña" className={styles.input}/>
+                            <input id='input2' type="password" name="password" placeholder="Ingresa tu contraseña" className={styles.input}/>
                         </div>
                         <Link href="#" className={styles.olvide_link}>¿Olvidaste tu contraseña?</Link>
                         <br/>
                         <br/>
-                        <button className={styles.button}>Iniciar sesión</button>
+                        <button id="button" className={styles.button}>Iniciar sesión</button>
                         <label className={styles.no_cuenta}>¿No tienes una cuenta?<Link href="#" className={styles.registrate}> Registrate</Link></label>
                     </div>
-                    <Image src={biglogo} alt="Tec Overflow" height={700} className={styles.imagen_rotada}/>
+                    {/* <Image src={biglogo} alt="Tec Overflow" height={700} className={styles.imagen_rotada}/> */}
                 </div>
+                <Script id="script">
+                    {`
+                        const button = document.getElementById("button");
+                        const input1 = document.getElementById("input1");
+                        const input2 = document.getElementById("input2");
+
+                        button.addEventListener("click", () => {
+                            if (input1.value === "") {
+                                input1.style.border = "1px solid red";
+                                if (input2.value === "") {
+                                    input2.style.border = "1px solid red";
+                                } else {
+                                    input2.style.border = "1px solid #000000";
+                                }
+                            }else{
+                                input1.style.border = "1px solid #000000";
+                                if (input2.value === "") {
+                                    input2.style.border = "1px solid red";
+                                } else {
+                                    input2.style.border = "1px solid #000000";
+                                    console.log("Todo bien");
+                                }
+                            }
+                        });
+                    `}
+                </Script>
             </main>
         </> 
     );
