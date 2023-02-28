@@ -22,7 +22,7 @@ export default function Login() {
                             </div>
                             <div className="nav">
                                 <div className="link">
-                                    <Link href="/login" className='active'>Log in</Link>
+                                    <Link href="/login" className={styles.active}>Log in</Link>
                                 </div>
                                 <div className="link">
                                     <Link href="/">Sign up</Link>
@@ -31,21 +31,25 @@ export default function Login() {
                         </div>
                     </div>
                 </header>
-                <div className="contenedor-principal">
-                    <div className="container">
-                        <h1>Iniciar sesión</h1>
+                <div className= {styles.contenedor_principal}>
+                    <div className={styles.container}>
+                        <h1 className={styles.h1}>Iniciar sesión</h1>
                         <br/>
-                        <div className="form">
-                            <label className="my_input">Correo electrónico</label>
-                            <input type="email" name="email" placeholder="Ingresa tu email" className="my_input"/>
-                            <label className="my_input">Contraseña</label>
-                            <input type="password" name="password" placeholder="Ingresa tu contraseña" className="my_input"/>
+                        <div className={styles.form}>
+                            <label className={styles.label}>Correo electrónico</label>
+                            <input type="email" name="email" placeholder="Ingresa tu email" className={styles.input}/>
+                            <br/>
+                            <br/>
+                            <label className={styles.label}>Contraseña</label>
+                            <input type="password" name="password" placeholder="Ingresa tu contraseña" className={styles.input}/>
                         </div>
-                        <Link href="#" className='olvide'>¿Olvidaste tu contraseña?</Link>
+                        <div>
+                            <Link href="#" className={styles.olvide_link}>¿Olvidaste tu contraseña?</Link>
+                        </div>
                         <br/>
                         <br/>
-                        <button className="my_button">Iniciar sesión</button>
-                        <label className='no_cuenta'>¿No tienes una cuenta?<Link href="#" className='registrate'> Registrate</Link></label>
+                        <button className={styles.button}>Iniciar sesión</button>
+                        <label className={styles.no_cuenta}>¿No tienes una cuenta?<Link href="#" className={styles.registrate}> Registrate</Link></label>
                     </div>
                 </div>
             </main>
