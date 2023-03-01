@@ -4,6 +4,7 @@ import logo from "/public/logo.svg";
 import Head from "next/head";
 import styles from "@/styles/contraseña.module.css";
 import biglogo from "/public/biglogo.svg";
+import Script from "next/script";
 
 export default function cambiarcontraseña() {
     return (
@@ -46,6 +47,39 @@ export default function cambiarcontraseña() {
                     </div>
                     <Image id="imagen2" src={biglogo} alt="Tec Overflow" height={600} className={styles.imagen_rotada}/>
                 </div>
+                <Script id="script">
+                    {`
+                        const button = document.getElementById("button");
+                        const input1 = document.getElementById("input1");
+                        const input2 = document.getElementById("input2");
+
+                        button.addEventListener("click", () => {
+                            if (input1.value === "") {
+                                input1.style.border = "1px solid red";
+                                if (input2.value === "") {
+                                    input2.style.border = "1px solid red";
+                                } else {
+                                    input2.style.border = "1px solid #000000";
+                                }
+                            }else{
+                                input1.style.border = "1px solid #000000";
+                                if (input2.value === "") {
+                                    input2.style.border = "1px solid red";
+                                } else {
+                                    input2.style.border = "1px solid #000000";
+                                    if (input1.value === input2.value) {
+                                        alert("Contraseña cambiada con éxito");
+                                        /* window.location.href = "/login"; */
+                                    } else {
+                                        alert("Las contraseñas no coinciden");
+                                    }   
+                                }
+                            input1.value = "";
+                            input2.value = "";
+                            }
+                        });
+                    `}
+                </Script>
             </main>
         </> 
     );
