@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap');
+
+.contenedor_principal{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container{
+    box-shadow: 0 4px 50px 0 rgba(0,0,0,0.25);
+    width: 400px;
+    height: 550px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: stretch;
+    padding-bottom: 20px;
+}
+
+.input{
+    border-radius: 25px;
+    width: 300px;
+    height: 40px;
+    background-color: white;
+    border: 1px solid #000000;
+    padding-left: 10px;
+}
+
+.label{
+    font-weight: 300;
+    margin-top: 10px;
+    padding: 0 0 0 15px;
+}
+
+.h1{
+    margin-top: 15px;
+    font-weight: 700;
+    font-size: 30px;
+}
+
+.button{
+    border-radius: 30px;
+    width: 148px;
+    height: 44px;
+    border: none;
+    font-weight: 600;
+    font-size: 16px;
+    background-color: #FACF14;
+    color: #3D3F94;
+    cursor: pointer;
+}
+
+.registrate{
+    color: red;
+}
+
+.olvide_link{
+    font-weight: 300;
+    font-size: 14px;
+    padding-left: 140px;
+}
+
+.no_cuenta{
+    font-size: 16px;
+    padding: 30px;
+}
+
+.active{
+    border-bottom: solid 4px red;
+}
+
+.imagen_rotada{
+    transform: rotateY(180deg);
+    background-color: transparent;
+}
