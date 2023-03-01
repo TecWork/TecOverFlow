@@ -31,9 +31,8 @@ export default function Login() {
                         </div>
                     </nav>
                 </header>
-                <div id={styles.toast}></div>
                 <div className= {styles.contenedor_principal}>
-                   {/*  <Image src={biglogo} alt="Tec Overflow" height={700} className={styles.Image}/> */}
+                    <Image id="imagen1" src={biglogo} alt="Tec Overflow" height={600}/>
                     <div className={styles.container}>
                         <h1 className={styles.h1}>Iniciar sesión</h1>
                         <br/>
@@ -51,7 +50,7 @@ export default function Login() {
                         <button id="button" className={styles.button}>Iniciar sesión</button>
                         <label className={styles.no_cuenta}>¿No tienes una cuenta?<Link href="#" className={styles.registrate}> Registrate</Link></label>
                     </div>
-                    {/* <Image src={biglogo} alt="Tec Overflow" height={700} className={styles.imagen_rotada}/> */}
+                    <Image id="imagen2" src={biglogo} alt="Tec Overflow" height={600} className={styles.imagen_rotada}/>
                 </div>
                 <Script id="script">
                     {`
@@ -62,8 +61,10 @@ export default function Login() {
                         button.addEventListener("click", () => {
                             if (input1.value === "") {
                                 input1.style.border = "1px solid red";
+                                alert("Los campos no pueden estar vacios");
                                 if (input2.value === "") {
                                     input2.style.border = "1px solid red";
+                                    alert("Los campos no pueden estar vacios");
                                 } else {
                                     input2.style.border = "1px solid #000000";
                                 }
@@ -71,10 +72,14 @@ export default function Login() {
                                 input1.style.border = "1px solid #000000";
                                 if (input2.value === "") {
                                     input2.style.border = "1px solid red";
+                                    alert("Los campos no pueden estar vacios");
                                 } else {
                                     input2.style.border = "1px solid #000000";
-                                    console.log("Todo bien");
+                                    console.log(input2.value);
+                                    console.log(input1.value);
                                 }
+                            input1.value = "";
+                            input2.value = "";
                             }
                         });
                     `}
