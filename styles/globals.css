@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 colores{
     --color-rojo: #D71B3D;
     --color-azul: #3D3F94;
@@ -15,7 +16,6 @@ colores{
   display: flex;
   align-items: center;
   justify-content: space-between;
-
 }
 .nav-link{
     display: flex;
