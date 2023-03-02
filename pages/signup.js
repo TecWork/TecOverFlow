@@ -28,29 +28,34 @@ export default function SignUp() {
           </nav>
           {/* TERMINA NAVEGACION */}
         </header>
+
+
         <div className={styles.contenedor_principal}>
           {/* <Image src={biglogo} alt="Tec Overflow" height={700} className={styles.container_img_l}/> */}
           <div className={styles.container}>
             <h1 className={styles.titulo}>Registrarte</h1>
             <br/>
+            <div className={styles.datos}>
+                <div className={styles.datos_bloque}>
+                  <label className={styles.label}>Nombre</label>
+                  <input type="text" name="nombre" className={styles.inputnombre}/>
+                </div>
+                <div className={styles.datos_bloque}>
+                  <label className={styles.label}>Apellido</label>
+                  <input type="text" name="apellido" className={styles.inputnombre}/>
+                </div>
+              </div>
             <div className={styles.form}>
-              <label className={styles.label}>Nombre</label>
-              <input type="text" name="nombre" placeholder="Ingresa tu nombre" className={styles.inputnombre}/>
-              <label className={styles.label}>Apellido</label>
-              <input type="text" name="apellido" placeholder="Ingresa tu apellido" className={styles.inputnombre}/>
-              
               <label className={styles.label}>Correo electrónico</label>
               <input type="email" name="email" placeholder="Ingresa tu email" className={styles.input}/>
-              <br/>
               <label className={styles.label}>Contraseña</label>
               <input type="password" name="password" placeholder="Ingresa tu contraseña" className={styles.input} />
               <label className={styles.label}>Confirmar contraseña</label>
               <input type="password" name="confirmpassword" placeholder="Confirmar contraseña" className={styles.input} />
               
-              <input type="checkbox" id="privacidad" name="terminos" className={styles.input} />
-              <label for="privacidad">Estoy de acuerdo con los terminos y privacidad</label>
+              <input type="checkbox" id="privacidad" name="terminos" className={styles.check}/>
+              <label for="privacidad">Aceptar los terminos y privacidad</label>
             </div>
-            <Link href="#" className={styles.olvide_link}>¿Olvidaste tu contraseña?</Link>
             <br/>
             <br/>
             <button className={styles.button}>Iniciar sesión</button>
