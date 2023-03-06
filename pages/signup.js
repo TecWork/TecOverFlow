@@ -1,7 +1,7 @@
 import logo from '/public/logo.svg'
 import Image from 'next/image'
 import Link from 'next/link'
-import biglogo from '/public/big_logo.svg'
+import biglogo from '/public/biglogo.svg'
 import styles from '@/styles/signup.module.css'
 
 export default function SignUp() {
@@ -34,7 +34,6 @@ export default function SignUp() {
           {/* <Image src={biglogo} alt="Tec Overflow" height={700} className={styles.container_img_l}/> */}
           <div className={styles.container}>
             <h1 className={styles.titulo}>Registrarte</h1>
-            <br/>
             <div className={styles.datos}>
                 <div className={styles.datos_bloque}>
                   <label className={styles.label}>Nombre</label>
@@ -52,11 +51,12 @@ export default function SignUp() {
               <input type="password" name="password" placeholder="Ingresa tu contraseña" className={styles.input} />
               <label className={styles.label}>Confirmar contraseña</label>
               <input type="password" name="confirmpassword" placeholder="Confirmar contraseña" className={styles.input} />
-              
-              <input type="checkbox" id="privacidad" name="terminos" className={styles.check}/>
-              <label for="privacidad">Aceptar los terminos y privacidad</label>
+              <br/>
+              <div className={styles.check}>
+                <input type="checkbox" id="privacidad" name="terminos" className={styles.check}/>
+                <label>Aceptar los terminos y privacidad</label>
+              </div>
             </div>
-            <br/>
             <br/>
             <button className={styles.button}>Iniciar sesión</button>
             <label className={styles.no_cuenta}>¿No tienes una cuenta?<Link href="#" className={styles.registrate}> Registrate</Link></label>
