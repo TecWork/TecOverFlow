@@ -2,7 +2,7 @@ import logo from '/public/logo.svg'
 import Image from 'next/image'
 import Link from 'next/link'
 import biglogo from '/public/biglogo.svg'
-import styles from '@/styles/signup.module.css'
+import styles from "@/styles/cambiarcontracorreo.css";
 
 export default function SignUp() {
     return (
