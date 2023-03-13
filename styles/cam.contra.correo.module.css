@@ -4,18 +4,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 50vh;
 }
 
 .container{
     color: black;
     box-shadow: 0 4px 50px 0 rgba(0,0,0,0.25);
     width: 400px;
-    height: 550px;
+    height: 300px;
     border-radius: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: center;
 }
 
 .form{
