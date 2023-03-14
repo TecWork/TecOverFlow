@@ -3,8 +3,7 @@
 .contenedor_principal{
     display: flex;
     align-items: center;
-    justify-content: center;
-    height: 50vh;
+    justify-content: space-between;
 }
 
 .container{
@@ -26,12 +25,6 @@
     justify-content: center;
 }
 
-.datos{
-    display: flex;
-    flex-direction: row;
-    gap: 15px;
-}
-
 .input{
     font-family: 'Poppins', sans-serif;
     border-radius: 25px;
@@ -42,32 +35,10 @@
     height: 40px;
 }
 
-.inputnombre{
-    font-family: 'Poppins', sans-serif;
-    border-radius: 25px;
-    background-color: white;
-    border: 1px solid #000000;
-    padding-left: 10px;
-    width: 140px;
-    height: 40px;
-}
-
-.datos_bloque{
-    display: flex;
-    flex-direction: column;
-}
-
 .label{
     font-weight: 300;
     margin-top: 10px;
     padding: 0px 0 0 15px;
-}
-
-.check{
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-
 }
 
 .titulo{
@@ -103,10 +74,11 @@
     padding: 30px;
 }
 
-.container_img_l{
-    transform: rotateY(3.142rad);
-}
-
 .active{
     border-bottom: solid 4px red;
+}
+
+.imagen_rotada{
+    transform: rotateY(180deg);
+    background-color: transparent;
 }

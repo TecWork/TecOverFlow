@@ -3,7 +3,7 @@
 .contenedor_principal{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .container{
@@ -107,4 +107,10 @@
 
 .active{
     border-bottom: solid 4px red;
+}
+
+
+.imagen_rotada{
+    transform: rotateY(180deg);
+    background-color: transparent;
 }

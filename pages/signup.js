@@ -31,7 +31,7 @@ export default function SignUp() {
 
 
         <div className={styles.contenedor_principal}>
-          {/* <Image src={biglogo} alt="Tec Overflow" height={700} className={styles.container_img_l}/> */}
+        <Image id="imagen1" src={biglogo} alt="Tec Overflow" height={600}/>
           <div className={styles.container}>
             <h1 className={styles.titulo}>Registrarte</h1>
             <div className={styles.datos}>
@@ -61,7 +61,7 @@ export default function SignUp() {
             <button className={styles.button}>Iniciar sesión</button>
             <label className={styles.no_cuenta}>¿No tienes una cuenta?<Link href="#" className={styles.registrate}> Registrate</Link></label>
           </div>
-         {/*  <Image src={biglogo} alt="Tec Overflow" height={700} className="container-img-l"/> */}
+          <Image id="imagen2" src={biglogo} alt="Tec Overflow" height={600} className={styles.imagen_rotada}/>
         </div>
       </main>
         </>
