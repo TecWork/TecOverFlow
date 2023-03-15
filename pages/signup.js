@@ -64,6 +64,6 @@ export default function SignUp() {
           <Image id="imagen2" src={biglogo} alt="Tec Overflow" height={600} className={styles.imagen_rotada}/>
         </div>
       </main>
-        </>
+      </>
     )
 };
