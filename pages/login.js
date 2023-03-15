@@ -78,7 +78,6 @@ export default function Login() {
                             console.log(email.validity.valid);
                             console.log(password.validity.valid);
                         });
-                        
                     `}
                 </Script>
             </main>
