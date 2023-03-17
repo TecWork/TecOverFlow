@@ -25,7 +25,7 @@ export default function Login() {
                                     <Link className={styles.active} href='/'>Log In</Link>
                                 </li>
                                 <li className='nav-item'>
-                                    <Link className='nav-item' href='/'>Sign Up</Link>
+                                    <Link className='nav-item' href='/signup'>Sign Up</Link>
                                 </li>
                             </ul>
                         </div>

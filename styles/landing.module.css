@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+
+.colores{
+    --color-rojo: #D71B3D;
+    --color-azul: #3D3F94;
+}
+.main{
+    padding: 0;
+    background-color: #F7F7FB;
+    HEIGHT: 100vh;
+}
+.hightexts{
+    @apply ml-20;
+    display: flex;
+    flex-direction: column;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 45px;
+    line-height: 68px;
+    letter-spacing: 2px;
+
+}
+
+.texts{
+    display: flex;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+.mensagitos{
+    @apply mr-6;
+    width: 100px;
+    height: 100px;
+
+}
+.content_Principal{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.footer{
+    padding-top: 10vh;
+    position: absolute;
+    z-index: 3;
+    color: black;
+    width: 100%;
+    height: 50%;
+    background-color: #3D3F94;
+    /* background-color: #3D3F94; */
+}
+.section1{
+    display: flex;
+
+}
+.footer{
+    justify-content: first baseline;
+}
+.about{
+    height: 30vh;
+    width: 45vh;
+    margin: 0 0 0 3vh;
+    background-color: #3D3F94;
+    color: white;
+}
+.about p {
+    background-color: #3D3F94;
+}
+.about h3{
+    background-color: #3D3F94;
+}
+.lorem{
+    height: 30vh;
+    width: 45vh;
+    margin: 0 0 0 3vh;
+    background-color: #3D3F94;
+    color: white;
+}
+.lorem p{
+    background-color: #3D3F94;
+}
+.lorem h3{
+    background-color: #3D3F94;
+}
+
+@media (min-width: 1360px) {
+    .hightexts{
+        margin-top: 10vh;
+        font-size: 2rem;
+        letter-spacing: 0;
+    }
+    .texts{
+        margin-bottom: 3rem;
+    }
+    .mensagitos{
+        width: 70px;
+        height: 70px;
+
+    }
+    .eagle{
+        @apply z-0 mr-0;
+        height: 89vh;
+        width: 60vh;
+        position: absolute;
+        right: 0em;
+        transform: scaleX(-1);
+        z-index: 0;
+        background: none;
+        /* width: 62vh; */
+    }
+    .wave{
+        position: absolute;
+        z-index: 0;
+        width: 100%;
+        background: none;
+        /* filter: brightness(1.1);
+        mix-blend-mode: overlay; */
+    }
+    .flecha{
+        position: absolute;
+        z-index: 2;
+        background: none;
+        margin-top: 6.5em;
+        margin-left: 46%;
+    }
+    .footer{
+        display: flex;
+    }
+    .content_Principal{
+       margin: 0 0 25vh 0;
+    }
+    .about{
+        height: 30vh;
+        width: 45vh;
+        margin: 0 0 0 3vh;
+        background-color: #3D3F94;
+        color: white;
+    }
+    .about p {
+        background-color: #3D3F94;
+    }
+    .about h3{
+        background-color: #3D3F94;
+    }
+    .lorem{
+        height: 30vh;
+        width: 45vh;
+        margin: 0 0 0 3vh;
+        background-color: #3D3F94;
+        color: white;
+        text-align: justify;
+    }
+    .lorem p{
+        background-color: #3D3F94;
+    }
+    .lorem h3{
+        background-color: #3D3F94;
+    }
+
+
+}

@@ -18,10 +18,10 @@ export default function SignUp() {
               </Link>
               <ul className='nav-link'>
                 <li className='nav-item'>
-                  <Link className='' href='/'>Log In</Link>
+                  <Link className='' href='/login'>Log In</Link>
                 </li>
                 <li className='nav-item'>
-                  <Link className={styles.active} href='/'>Sign Up</Link>
+                  <Link className={styles.active} href='/signup'>Sign Up</Link>
                 </li>
               </ul>
             </div>
