@@ -25,7 +25,8 @@ export default function Login() {
                                     <Link className={styles.active} href='/'>Log In</Link> {/* Este link nos dirije a la pantalla de Log in, y la clase "active" le aplica el borde rojo para identificar que estamos dentro de esta */}
                                 </li>
                                 <li className='nav-item'>
-                                    <Link className='nav-item' href='/'>Sign Up</Link> {/* Este link nos dirije a la pantalla de Sign up */}
+                                    <Link className='nav-item' href='/'>Sign Up</Link> 
+                                    <Link className='nav-item' href='/signup'>Sign Up</Link>
                                 </li>
                             </ul>
                         </div>

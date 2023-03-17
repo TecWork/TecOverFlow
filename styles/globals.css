@@ -1,6 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+
 
 colores{
     --color-rojo: #D71B3D;
@@ -8,7 +10,7 @@ colores{
 }
 
 *>*{
-  background-color: #F7F7FB;  
+    background-color: #F7F7FB;
   font-family: poppins, sans-serif;
 }
 /* Path: styles/globals.css */
@@ -16,6 +18,7 @@ colores{
   display: flex;
   align-items: center;
   justify-content: space-between;
+
 }
 .nav-link{
     display: flex;
@@ -38,6 +41,8 @@ colores{
     font-size: 2.8rem;
     
 }
+
+
 
 @media (min-width: 1360px) {
     .logo{
