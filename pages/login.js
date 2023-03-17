@@ -14,47 +14,47 @@ export default function Login() {
                     <title>Tec Overflow | Log in</title>
                 </Head>
                 <header>
-                    <nav className='navbar ml-20 mr-20 px-5 mt-10'>
-                        <div className='navbar-brand'>
+                    <nav className='navbar ml-20 mr-20 px-5 mt-10'> {/* Esta es la barra de navegacion que aparece en la parte superior de la pantalla */}
+                        <div className='navbar-brand'> 
                             <Link className='nav-link' href='/'>
                             <Image className='logo' src={logo} alt='Tec OverFlow'/>
                             <h1 className='mx-7 titulo'>Tec OverFlow</h1>
                             </Link>
-                            <ul className='nav-link'>
+                            <ul className='nav-link'> 
                                 <li className='nav-item'>
-                                    <Link className={styles.active} href='/'>Log In</Link>
+                                    <Link className={styles.active} href='/'>Log In</Link> {/* Este link nos dirije a la pantalla de Log in, y la clase "active" le aplica el borde rojo para identificar que estamos dentro de esta */}
                                 </li>
                                 <li className='nav-item'>
-                                    <Link className='nav-item' href='/'>Sign Up</Link>
+                                    <Link className='nav-item' href='/'>Sign Up</Link> {/* Este link nos dirije a la pantalla de Sign up */}
                                 </li>
                             </ul>
                         </div>
                     </nav>
                 </header>
                 <div className= {styles.contenedor_principal}>
-                    <Image id="imagen1" src={biglogo} alt="Tec Overflow" height={600}/>
-                    <div className={styles.container}>
-                        <h1 className={styles.h1}>Iniciar sesión</h1>
+                    <Image id="imagen1" src={biglogo} alt="Tec Overflow" height={600}/> {/* Esta imagen es la que aparece a los costados de la pantalla */}
+                    <div className={styles.container}> {/* Este div contiene todo lo que esta dentro de la pantalla */}
+                        <h1 className={styles.h1}>Iniciar sesión</h1> {/* Este es el titulo de la pantalla */}
                         <br/>
-                        <div className={styles.form}>
-                            <label className={styles.label} >Correo electrónico</label>
-                            <input id='input1' type="email" name="email" placeholder="Ingresa tu email" className={styles.input} required/>
+                        <div className={styles.form}> {/* Este div contiene el formulario */}
+                            <label className={styles.label} >Correo electrónico</label> {/* Este es el label del input de correo electronico */}
+                            <input id='input1' type="email" name="email" placeholder="Ingresa tu email" className={styles.input} required/> {/* Este es el input de correo electronico */}
                             <br/>
                             <br/>
-                            <label className={styles.label}>Contraseña</label>
-                            <input id='input2' type="password" name="password" placeholder="Ingresa tu contraseña" className={styles.input} required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?!.*[ !@#$%^&*_=+-]).{8,30}$" title="Al menos 6 caracteres, máximo 12, debe contener una letra mayúscula, una minuscula, un número y no puede contener caracteres especiales"/>
+                            <label className={styles.label}>Contraseña</label> {/* Este es el label del input de contraseña */}
+                            <input id='input2' type="password" name="password" placeholder="Ingresa tu contraseña" className={styles.input} required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?!.*[ !@#$%^&*_=+-]).{8,30}$" title="Al menos 6 caracteres, máximo 12, debe contener una letra mayúscula, una minuscula, un número y no puede contener caracteres especiales"/> {/* Este es el input de contraseña, el "pattern" son las condicionales que debe de cumplir para que sea valida, y el "title" es el mensaje que aparecera al poner el cursor sobre el input */}
                         </div>
-                        <Link href="#" className={styles.olvide_link}>¿Olvidaste tu contraseña?</Link>
+                        <Link href="/cam_contraCorreo" className={styles.olvide_link}>¿Olvidaste tu contraseña?</Link> {/* Este link nos dirije a la pantalla de olvide mi contraseña */}
                         <br/>
                         <br/>
-                        <button id="button" className={styles.button} href='/'>Iniciar sesión</button>
-                        <label className={styles.no_cuenta}>¿No tienes una cuenta?<Link href="/" className={styles.registrate}> Registrate</Link></label>
+                        <Link href="/login" id="button" className={styles.button}>Iniciar sesión</Link> {/* Verificar como hacer que te dirija a la pagina solo cuando se cumplen los parametros */}
+                        <label className={styles.no_cuenta}>¿No tienes una cuenta?<Link href="/" className={styles.registrate}> Registrate</Link></label> {/* Este label nos dirije a la pantalla de Sign up */}
                     </div>
-                    <Image id="imagen2" src={biglogo} alt="Tec Overflow" height={600} className={styles.imagen_rotada}/>
+                    <Image id="imagen2" src={biglogo} alt="Tec Overflow" height={600} className={styles.imagen_rotada}/> {/* Esta imagen es la que aparece a los costados de la pantalla pero rotada */}
                 </div>
                 <Script id="script">
                     {`
-                        const email = document.querySelector("#input1");
+                        const email = document.querySelector("#input1"); 
                         const password = document.querySelector("#input2");
                         const button = document.querySelector("#button");
                         
@@ -77,6 +77,13 @@ export default function Login() {
                         button.addEventListener('click', () => {
                             console.log(email.validity.valid);
                             console.log(password.validity.valid);
+                            if (email.validity.valid && password.validity.valid){
+                                button.location.href="/"
+                            }else{
+                                alert("Por favor, ingrese un correo electrónico y una contraseña válidos");
+                                password.style.border = "1px solid red";
+                                email.style.border = "1px solid red";
+                            }
                         });
                     `}
                 </Script>

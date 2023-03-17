@@ -62,6 +62,10 @@
     background-color: #FACF14;
     color: #3D3F94;
     cursor: pointer;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
 }
 
 .registrate{
