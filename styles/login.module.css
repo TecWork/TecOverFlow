@@ -91,3 +91,30 @@
     transform: rotateY(180deg);
     background-color: transparent;
 }
+
+/*Modificaciones del toast*/
+
+.toast{
+    display: none;
+    position: absolute;
+    margin-top: 38rem;
+}
+
+.toast_text{
+    display: flex;
+    flex-direction: column;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.texto_tipo{
+    font-weight: 600;
+    font-size: 20px;
+    color: white;
+}
+
+.texto_desc{
+    font-weight: 300;
+    font-size: 12px;
+    color: white;
+}

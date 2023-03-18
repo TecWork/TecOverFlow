@@ -48,9 +48,25 @@ export default function Login() {
                         <Link href="/cam_contraCorreo" className={styles.olvide_link}>¿Olvidaste tu contraseña?</Link> {/* Este link nos dirije a la pantalla de olvide mi contraseña */}
                         <br/>
                         <br/>
-                        <Link href="/login" id="button" className={styles.button}>Iniciar sesión</Link> {/* Verificar como hacer que te dirija a la pagina solo cuando se cumplen los parametros */}
+                        <Link href="#" id="button" className={styles.button}>Iniciar sesión</Link> {/* Verificar como hacer que te dirija a la pagina solo cuando se cumplen los parametros */}
                         <label className={styles.no_cuenta}>¿No tienes una cuenta?<Link href="/" className={styles.registrate}> Registrate</Link></label> {/* Este label nos dirije a la pantalla de Sign up */}
+                        
+                        {/* Insertar un toast y darle el display de none */}
+                    <div id="toast" className={styles.toast}>
+                            <div id="toast-success" className="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-red-700" role="alert">
+                                <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-red-100 rounded-lg dark:bg-red-700 dark:text-green-200">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="w-6 h-6"> <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /> </svg>
+                                    <span class="sr-only">x-mark icon</span>
+                                </div>
+                                <div className={styles.toast_text}>
+                                    <div className={styles.texto_tipo}>Error</div>
+                                    <div className={styles.texto_desc}>Correo o contraseña incorrecta</div>
+                                </div>
+                            </div>
+                        </div>
+                        {/* Aqui termina el toast */}
                     </div>
+
                     <Image id="imagen2" src={biglogo} alt="Tec Overflow" height={600} className={styles.imagen_rotada}/> {/* Esta imagen es la que aparece a los costados de la pantalla pero rotada */}
                 </div>
                 <Script id="script">
@@ -58,7 +74,8 @@ export default function Login() {
                         const email = document.querySelector("#input1"); 
                         const password = document.querySelector("#input2");
                         const button = document.querySelector("#button");
-                        
+                        const toast = document.querySelector("#toast");
+
                         email.addEventListener('blur', () => {
                             if (email.value === "" ){
                                 email.style.border = "1px solid red";
@@ -81,9 +98,10 @@ export default function Login() {
                             if (email.validity.valid && password.validity.valid){
                                 button.location.href="/"
                             }else{
-                                alert("Por favor, ingrese un correo electrónico y una contraseña válidos");
                                 password.style.border = "1px solid red";
                                 email.style.border = "1px solid red";
+                                toast.style.display = "block";
+                                setTimeout(function(){ toast.style.display = "none"; }, 3000);
                             }
                         });
                     `}
