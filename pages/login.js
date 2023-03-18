@@ -12,20 +12,20 @@ export default function Login() {
             <main>
                 <Head>
                     <title>Tec Overflow | Log in</title>
+                    <link rel="icon" href="/logo.svg" />
                 </Head>
                 <header>
                     <nav className='navbar ml-20 mr-20 px-5 mt-10'> {/* Esta es la barra de navegacion que aparece en la parte superior de la pantalla */}
                         <div className='navbar-brand'> 
-                            <Link className='nav-link' href='/'>
-                            <Image className='logo' src={logo} alt='Tec OverFlow'/>
-                            <h1 className='mx-7 titulo'>Tec OverFlow</h1>
+                            <Link className='nav-link_icon' href='/'>
+                                <Image className='logo' src={logo} alt='Tec OverFlow'/>
+                                <h1 className='mx-7 titulo'>Tec OverFlow</h1>
                             </Link>
-                            <ul className='nav-link'> 
+                            <ul className='nav-link'>
                                 <li className='nav-item'>
-                                    <Link className={styles.active} href='/'>Log In</Link> {/* Este link nos dirije a la pantalla de Log in, y la clase "active" le aplica el borde rojo para identificar que estamos dentro de esta */}
+                                    <Link className={styles.active} href='/login'>Log In</Link> {/* Este link nos dirije a la pantalla de Log in, y la clase "active" le aplica el borde rojo para identificar que estamos dentro de esta */}
                                 </li>
                                 <li className='nav-item'>
-                                    <Link className='nav-item' href='/'>Sign Up</Link> 
                                     <Link className='nav-item' href='/signup'>Sign Up</Link>
                                 </li>
                             </ul>
@@ -92,4 +92,3 @@ export default function Login() {
         </> 
     );
 }
-

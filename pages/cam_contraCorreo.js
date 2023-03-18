@@ -13,7 +13,7 @@ export default function SignUp() {
           {/* EMPIEZA NAVEGACION */}
           <nav className='navbar ml-20 mr-20 px-5 mt-10'>
             <div className='navbar-brand'>
-              <Link className='nav-link' href='/'>
+              <Link className='nav-link_icon' href='/'>
                 <Image className='logo' src={logo} alt='Tec OverFlow'/>
                 <h1 className='mx-7 titulo'>Tec OverFlow</h1>
               </Link>

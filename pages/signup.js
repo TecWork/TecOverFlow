@@ -1,5 +1,6 @@
 import logo from '/public/logo.svg'
 import Image from 'next/image'
+import Head from "next/head";
 import Link from 'next/link'
 import biglogo from '/public/biglogo.svg'
 import styles from '@/styles/signup.module.css'
@@ -8,28 +9,28 @@ export default function SignUp() {
     return (
         <>
         <main>
-        <header>
-          {/* EMPIEZA NAVEGACION */}
-          <nav className='navbar ml-20 mr-20 px-5 mt-10'>
-            <div className='navbar-brand'>
-              <Link className='nav-link' href='/'>
-                <Image className='logo' src={logo} alt='Tec OverFlow'/>
-                <h1 className='mx-7 titulo'>Tec OverFlow</h1>
-              </Link>
-              <ul className='nav-link'>
-                <li className='nav-item'>
-                  <Link className='' href='/login'>Log In</Link>
-                </li>
-                <li className='nav-item'>
-                  <Link className={styles.active} href='/signup'>Sign Up</Link>
-                </li>
-              </ul>
-            </div>
-          </nav>
-          {/* TERMINA NAVEGACION */}
-        </header>
-
-
+          <Head>
+            <title>Tec Overflow | Sign Up</title>
+            <link rel="icon" href="/logo.svg" />
+          </Head>
+          <header>
+            <nav className='navbar ml-20 mr-20 px-5 mt-10'> {/* Esta es la barra de navegacion que aparece en la parte superior de la pantalla */}
+                <div className='navbar-brand'> 
+                    <Link className='nav-link_icon' href='/'>
+                      <Image className='logo' src={logo} alt='Tec OverFlow'/>
+                      <h1 className='mx-7 titulo'>Tec OverFlow</h1>
+                    </Link>
+                    <ul className='nav-link'>
+                        <li className='nav-item'>
+                            <Link className='nav-item' href='/login'>Log In</Link> {/* Este link nos dirije a la pantalla de Log in, y la clase "active" le aplica el borde rojo para identificar que estamos dentro de esta */}
+                        </li>
+                        <li className='nav-item'>
+                            <Link className={styles.active} href='/signup'>Sign Up</Link>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+          </header>
         <div className={styles.contenedor_principal}>
         <Image id="imagen1" src={biglogo} alt="Tec Overflow" height={600}/>
           <div className={styles.container}>
