@@ -36,30 +36,26 @@ export default function Login() {
                     <Image id="imagen1" src={biglogo} alt="Tec Overflow" height={600}/> {/* Esta imagen es la que aparece a los costados de la pantalla */}
                     <div className={styles.container}> {/* Este div contiene todo lo que esta dentro de la pantalla */}
                         <h1 className={styles.h1}>Iniciar sesión</h1> {/* Este es el titulo de la pantalla */}
-                        <br/>
                         <form className={styles.form}> {/* Este div contiene el formulario */}
-                            <label className={styles.label} >Correo electrónico</label> {/* Este es el label del input de correo electronico */}
-                            <input id='input1' type="email" name="email" placeholder="Ingresa tu email" className={styles.input} required/> {/* Este es el input de correo electronico */}
-                            <br/>
-                            <br/>
-                            <label className={styles.label}>Contraseña</label> {/* Este es el label del input de contraseña */}
-                            <input id='input2' type="password" name="password" placeholder="Ingresa tu contraseña" className={styles.input} required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?!.*[ !@#$%^&*_=+-]).{8,30}$" title="Al menos 6 caracteres, máximo 12, debe contener una letra mayúscula, una minuscula, un número y no puede contener caracteres especiales"/> {/* Este es el input de contraseña, el "pattern" son las condicionales que debe de cumplir para que sea valida, y el "title" es el mensaje que aparecera al poner el cursor sobre el input */}
+                            <div className={styles.labels}>
+                                <label className={styles.label} >Correo electrónico</label> {/* Este es el label del input de correo electronico */}
+                                <input id='input1' type="email" name="email" placeholder="Ingresa tu email" className={styles.input} required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"/> {/* Este es el input de correo electronico */}
+                                <label className={styles.label}>Contraseña</label> {/* Este es el label del input de contraseña */}
+                                <input id='input2' type="password" name="password" placeholder="Ingresa tu contraseña" className={styles.input} required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?!.*[ !@#$%^&*_=+-]).{8,30}$" title="Al menos 8 caracteres, máximo 12, debe contener una letra mayúscula, una minuscula, un número y no puede contener caracteres especiales"/> {/* Este es el input de contraseña, el "pattern" son las condicionales que debe de cumplir para que sea valida, y el "title" es el mensaje que aparecera al poner el cursor sobre el input */}
+                            </div>
                             <Link href="/cam_contraCorreo" className={styles.olvide_link}>¿Olvidaste tu contraseña?</Link> {/* Este link nos dirije a la pantalla de olvide mi contraseña */}
-                            <br/>
-                            <br/>
                             <button type="submit" id="button" className={styles.button}>Iniciar sesión</button> {/* Verificar como hacer que te dirija a la pagina solo cuando se cumplen los parametros */}
-                            {/* <Link href="#" id="check" className={styles.check}></Link> */}
                             <label className={styles.no_cuenta}>¿No tienes una cuenta?<Link href="/" className={styles.registrate}> Registrate</Link></label> {/* Este label nos dirije a la pantalla de Sign up */}
                         </form>
-                        
+                
                         {/* Toast de error */}
                         <div id="toast_error" className={styles.toast_error}>
                             <div className={styles.icon}>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shield-x" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3" />
-                                <path d="M10 10l4 4m0 -4l-4 4" />
-                            </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shield-x" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3" />
+                                    <path d="M10 10l4 4m0 -4l-4 4" />
+                                </svg>
                             </div>
                             <div className={styles.toast_text}>
                                 <span className={styles.toast_type}>Error</span>
@@ -71,11 +67,11 @@ export default function Login() {
                         {/* Toast succes */}
                         <div id="toast_succes" className={styles.toast_succes}>
                             <div className={styles.icon}>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shield-x" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3" />
-                                <path d="M10 10l4 4m0 -4l-4 4" />
-                            </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shield-check" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M9 12l2 2l4 -4" />
+                                    <path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3" />
+                                </svg>
                             </div>
                             <div className={styles.toast_text}>
                                 <span className={styles.toast_type}>Correcto</span>

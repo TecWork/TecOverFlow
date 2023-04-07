@@ -4,11 +4,16 @@ import Link from 'next/link'
 import biglogo from '/public/biglogo.svg'
 import Script from "next/script";
 import styles from '@/styles/cam.contra.correo.module.css'
+import Head from 'next/head'
 
 export default function SignUp() {
     return (
         <>
         <main>
+          <Head>
+            <title>Tec Overflow | Cambiar contraseña</title>
+            <link rel="icon" href="/logo.svg"/>
+          </Head>
         <header>
           {/* EMPIEZA NAVEGACION */}
           <nav className='navbar ml-20 mr-20 px-5 mt-10'>
@@ -37,7 +42,7 @@ export default function SignUp() {
             <h1 className={styles.titulo}>Recuperar contraseña</h1>
             <div className={styles.form}>
               <label className={styles.label}>Correo electrónico</label>
-              <input id="correo" type="email" name="email" placeholder="Ingresa tu email" className={styles.input} required/>
+              <input id="correo" type="email" name="email" placeholder="Ingresa tu email" className={styles.input} required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"/>
               <br/>
             </div>
             <button type='submit' id="button" className={styles.button}>Enviar</button>
@@ -45,11 +50,11 @@ export default function SignUp() {
                         {/* Toast succes */}
                         <div id="toast_succes" className={styles.toast_succes}>
                             <div className={styles.icon}>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shield-x" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shield-check" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M9 12l2 2l4 -4" />
                                 <path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3" />
-                                <path d="M10 10l4 4m0 -4l-4 4" />
-                            </svg>
+                              </svg>
                             </div>
                             <div className={styles.toast_text}>
                                 <span className={styles.toast_type}>Correcto</span>
