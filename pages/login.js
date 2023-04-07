@@ -53,35 +53,37 @@ export default function Login() {
                         </form>
                         
                         {/* Toast de error */}
-                        <div id="toaste" className={styles.toaste}>
-                            <div id="toast-success" className="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-red-700" role="alert">
-                                <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-red-100 rounded-lg dark:bg-red-700 dark:text-green-200">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="w-6 h-6"> <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /> </svg>
-                                    <span class="sr-only">x-mark icon</span>
-                                </div>
-                                <div className={styles.toast_text}>
-                                    <div className={styles.texto_tipo}>Error</div>
-                                    <div className={styles.texto_desc}>Correo o contraseña incorrecta</div>
-                                </div>
+                        <div id="toast_error" className={styles.toast_error}>
+                            <div className={styles.icon}>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shield-x" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3" />
+                                <path d="M10 10l4 4m0 -4l-4 4" />
+                            </svg>
+                            </div>
+                            <div className={styles.toast_text}>
+                                <span className={styles.toast_type}>Error</span>
+                                <span className={styles.toast_desc}>Correo o contraseña incorrecta</span>
                             </div>
                         </div>
                         {/* Aqui termina el toast de error */}
 
                         {/* Toast succes */}
-                        <div id="toasts" className={styles.toasts}>
-                            <div id="toast-success" className="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-green-700" role="alert">
-                                <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-700 dark:text-green-200">
-                                    <svg fill="none" stroke="white" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
-                                    </svg>
-                                    <span class="sr-only">CheckIcon </span>
-                                </div>
-                                <div className={styles.toast_text}>
-                                    <div className={styles.texto_tipo}>Correcto</div>
-                                    <div className={styles.texto_desc}>Acceso correcto</div>
-                                </div>
+                        <div id="toast_succes" className={styles.toast_succes}>
+                            <div className={styles.icon}>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shield-x" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 -8.5 15a12 12 0 0 1 -8.5 -15a12 12 0 0 0 8.5 -3" />
+                                <path d="M10 10l4 4m0 -4l-4 4" />
+                            </svg>
+                            </div>
+                            <div className={styles.toast_text}>
+                                <span className={styles.toast_type}>Correcto</span>
+                                <span className={styles.toast_desc}>Acceso correcto</span>
                             </div>
                         </div>
+                        {/* Termina toast succes */}
+                        
                     </div>
 
                     <Image id="imagen2" src={biglogo} alt="Tec Overflow" height={600} className={styles.imagen_rotada}/> {/* Esta imagen es la que aparece a los costados de la pantalla pero rotada */}
@@ -92,8 +94,8 @@ export default function Login() {
                         const email = document.querySelector("#input1"); 
                         const password = document.querySelector("#input2");
                         const button = document.querySelector("#button");
-                        const toaste = document.querySelector("#toaste");
-                        const toasts = document.querySelector("#toasts");
+                        const toaste = document.querySelector("#toast_error");
+                        const toasts = document.querySelector("#toast_succes");
 
                         email.addEventListener('blur', () => {
                             if (email.value === "" ){
@@ -117,28 +119,28 @@ export default function Login() {
                             if (email.validity.valid && password.validity.valid){
                                 console.log("hola");
                                 setTimeout(function(){window.location.href = "/";}, 3000);
-                                toasts.style.display = "block";
+                                toasts.style.display = "flex";
                                 setTimeout(function(){ toasts.style.display = "none"; }, 3000);
 
-                            }else{
+                            } else{
                                 password.style.border = "1px solid red";
                                 email.style.border = "1px solid red";
-                                toaste.style.display = "block";
-                                setTimeout(function(){ toast.style.display = "none"; }, 3000);
+                                toaste.style.display = "flex";
+                                setTimeout(function(){ toaste.style.display = "none"; }, 3000);
                             }
                         });
 
 
-                        button.addEventListener('click', () => {
+                        /* button.addEventListener('click', () => {
                             console.log(email.validity.valid);
                             console.log(password.validity.valid);
                             if (email.validity.valid && password.validity.valid){
                                 console.log("hola");
                             }else{
-                                toast.style.display = "block";
-                                setTimeout(function(){ toast.style.display = "none"; }, 3000);
+                                toaste.style.display = "flex";
+                                setTimeout(function(){ toaste.style.display = "none"; }, 3000);
                             }
-                        });
+                        }); */
 
                     `}
                 </Script>
