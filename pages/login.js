@@ -129,19 +129,6 @@ export default function Login() {
                                 setTimeout(function(){ toaste.style.display = "none"; }, 3000);
                             }
                         });
-
-
-                        /* button.addEventListener('click', () => {
-                            console.log(email.validity.valid);
-                            console.log(password.validity.valid);
-                            if (email.validity.valid && password.validity.valid){
-                                console.log("hola");
-                            }else{
-                                toaste.style.display = "flex";
-                                setTimeout(function(){ toaste.style.display = "none"; }, 3000);
-                            }
-                        }); */
-
                     `}
                 </Script>
             </main>
