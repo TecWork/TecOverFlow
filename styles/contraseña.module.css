@@ -66,3 +66,52 @@
     transform: rotateY(180deg);
     background-color: transparent;
 }
+
+.toast_error{
+    width: 280px;
+    height: 80px;
+    position: absolute;
+    margin-top: 27rem;
+    border-radius: 10px;
+    display: none;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    background-color: #FF0000;
+}
+
+.toast_succes{
+    width: 280px;
+    height: 80px;
+    position: absolute;
+    margin-top: 27rem;
+    border-radius: 10px;
+    display: none;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    background-color: #028E3A;
+}
+
+.toast_text{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.toast_type{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.toast_desc{
+    font-size: 12px;
+}
+
+.icon{
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+    margin-left: 10px;
+}
