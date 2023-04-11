@@ -7,7 +7,6 @@
 }
 
 .container{
-    color: black;
     box-shadow: 0 4px 50px 0 rgba(0,0,0,0.25);
     width: 400px;
     height: 550px;
@@ -65,7 +64,6 @@
     display: flex;
     flex-direction: row;
     gap: 10px;
-
 }
 
 .titulo{
@@ -84,25 +82,16 @@
     background-color: #FACF14;
     color: #3D3F94;
     cursor: pointer;
+    margin-top: 15px;
 }
 
 .registrate{
     color: red;
 }
 
-.olvide_link {
-    font-weight: 300;
-    font-size: 14px;
-    padding-left: 140px;
-}
-
 .no_cuenta{
     font-size: 16px;
     padding: 30px;
-}
-
-.container_img_l{
-    transform: rotateY(3.142rad);
 }
 
 .active{
@@ -113,4 +102,53 @@
 .imagen_rotada{
     transform: rotateY(180deg);
     background-color: transparent;
+}
+
+.toast_error{
+    width: 280px;
+    height: 80px;
+    position: absolute;
+    margin-top: 37rem;
+    border-radius: 10px;
+    display: none;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    background-color: #FF0000;
+}
+
+.toast_succes{
+    width: 280px;
+    height: 80px;
+    position: absolute;
+    margin-top: 37rem;
+    border-radius: 10px;
+    display: none;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    background-color: #028E3A;
+}
+
+.toast_text{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.toast_type{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.toast_desc{
+    font-size: 12px;
+}
+
+.icon{
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+    margin-left: 10px;
 }

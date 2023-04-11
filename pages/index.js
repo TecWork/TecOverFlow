@@ -29,7 +29,7 @@ export default function Home() {
           {/* EMPIEZA NAVEGACION */}
           <nav className='navbar ml-20 mr-20 px-5 mt-10'>
             <div className='navbar-brand'>
-              <Link className='nav-link' href='/'>
+              <Link className='nav-link_icon' href='/'>
                 <Image className='logo' src={logo} alt='Tec OverFlow'/>
                 <h1 className='mx-7 titulo'>Tec OverFlow</h1>
               </Link>
@@ -51,24 +51,24 @@ export default function Home() {
             <div className={styles.section1}>
               <div className={styles.hightexts}>
                 <div className={styles.texts}>
-                  <Image className={styles.mensagitos} src={msgcode}/>
+                  <Image className={styles.mensagitos} src={msgcode} alt="icono dudas"/>
                   <h3 className='flex texts'>Publica tus dudas sobre cualquier materia</h3>
                 </div>
                 <div className={styles.texts}>
-                  <Image className={styles.mensagitos} src={msgalert}/>
+                  <Image className={styles.mensagitos} src={msgalert} alt="icono temas"/>
                   <h3 className='flex texts'>Discute los distintos temas dentro del foro</h3>
                 </div>
                 <div className={styles.texts}>
-                  <Image className={styles.mensagitos} src={likealert}/>
-                  <h3>Califica las respeustas de los otros estudiantes</h3>
+                  <Image className={styles.mensagitos} src={likealert} alt="icono califica"/>
+                  <h3>Califica las respuestas de los otros estudiantes</h3>
                 </div>
               </div>
-              <Image className={styles.eagle} src={eaglel}/>
+              <Image className={styles.eagle} src={eaglel} alt="aguila"/>
             </div>
             <div className='flex'>
-              <Image src={wave} className={styles.wave}/>
+              <Image src={wave} className={styles.wave} alt="wave"/>
               <a href='#footer'>
-                <Image src={flecha} className={styles.flecha}/>
+                <Image src={flecha} className={styles.flecha} alt="flecha"/>
               </a>
             </div>
           </div>
@@ -82,7 +82,7 @@ export default function Home() {
             </div>
             <div className={styles.lorem}>
               <h3 className=' text-2xl text-white'>Lorem</h3>
-              <p class=" text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae quas, ipsum numquam cupiditate mollitia rerum unde repellat impedit error sapiente debitis dignissimos iste, voluptates ipsam, inventore voluptas id doloribus quam sint dolores voluptate soluta quo ad consequatur. Tempora qui itaque optio atque unde labore expedita velit vel, dolores, aperiam autem.</p>
+              <p className=" text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae quas, ipsum numquam cupiditate mollitia rerum unde repellat impedit error sapiente debitis dignissimos iste, voluptates ipsam, inventore voluptas id doloribus quam sint dolores voluptate soluta quo ad consequatur. Tempora qui itaque optio atque unde labore expedita velit vel, dolores, aperiam autem.</p>
             </div>
           </div>
         </footer>

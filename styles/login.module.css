@@ -9,7 +9,7 @@
 .container{
     box-shadow: 0 4px 50px 0 rgba(0,0,0,0.25);
     width: 400px;
-    height: 550px;
+    height: 450px;
     border-radius: 30px;
     display: flex;
     flex-direction: column;
@@ -20,9 +20,9 @@
 .form{
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: stretch;
+    align-items: center;
     padding-bottom: 20px;
+    gap: 10px;
 }
 
 .input{
@@ -32,12 +32,25 @@
     background-color: white;
     border: 1px solid #000000;
     padding-left: 10px;
+    margin-bottom: 15px;
+}
+
+.p{
+    display: none;
+    padding-left: 10px;
+    color: red;
 }
 
 .label{
     font-weight: 300;
     margin-top: 10px;
     padding: 0 0 0 15px;
+}
+
+.labels{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
 }
 
 .h1{
@@ -56,6 +69,11 @@
     background-color: #FACF14;
     color: #3D3F94;
     cursor: pointer;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 20px;
 }
 
 .registrate{
@@ -80,4 +98,54 @@
 .imagen_rotada{
     transform: rotateY(180deg);
     background-color: transparent;
+}
+
+/*Modificaciones del toast*/
+.toast_error{
+    width: 280px;
+    height: 80px;
+    position: absolute;
+    margin-top: 30rem;
+    border-radius: 10px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    background-color: #FF0000;
+}
+
+.toast_succes{
+    width: 280px;
+    height: 80px;
+    position: absolute;
+    margin-top: 30rem;
+    border-radius: 10px;
+    display: none;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    background-color: #028E3A;
+}
+
+.toast_text{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.toast_type{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.toast_desc{
+    font-size: 12px;
+}
+
+.icon{
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+    margin-left: 10px;
 }
