@@ -4,8 +4,30 @@ import eagle from "/public/biglogo.svg"
 import Link from "next/link"
 import Image from "next/image"
 import styles from "@/styles/Home.module.css"
+import Script from "next/script"
+import { useState } from "react"
 
 export default function Homepage() {
+  const [isActiveButton1, setIsActiveButton1] = useState(false);
+  const [isActiveButton2, setIsActiveButton2] = useState(false);
+  const [isActiveButton3, setIsActiveButton3] = useState(false);
+
+  const handleClick = (event) => {
+    if (event.target.id === 'todas') {
+        setIsActiveButton1(!isActiveButton1);
+        setIsActiveButton2(false);
+        setIsActiveButton3(false);
+    } else if (event.target.id === 'sr') {
+        setIsActiveButton2(!isActiveButton2);
+        setIsActiveButton1(false);
+        setIsActiveButton3(false);
+    } else if (event.target.id === 'mp') {
+        setIsActiveButton3(!isActiveButton3);
+        setIsActiveButton1(false);
+        setIsActiveButton2(false);
+    }
+    };
+
     return (
         <>
             <Head>
@@ -43,8 +65,30 @@ export default function Homepage() {
                         </svg>
                     </div>
                 </header>
-                <div className="Container">
-                    <Image id="aguila" src={eagle} alt="aguila" height={550}/>
+                <div className={styles.main_container}>
+                    <div className={styles.container}>
+                        <Image id="aguila" src={eagle} alt="aguila" height={550}/>
+                    </div>
+                    <div className={styles.filtros}>
+                        <h1 className={styles.preguntas}>Preguntas recientes</h1>
+                        <div className={styles.filtros_container}>
+                            <div className={styles.filtros_container_filtro}>
+                                <select className={styles.filtros_container_filtro_select}>
+                                    <option selected>Todas las materias</option>
+                                    <option value="1">DAW</option>
+                                    <option value="2">Sistemas operativos</option>
+                                    <option value="3">POO</option>
+                                    <option value="4">Base de datos</option>
+                                </select>
+                            </div>
+                            <p onClick={handleClick} className={isActiveButton1 ? styles.activeFilter : styles.filtros_todas} id="todas">Todas</p>
+                            <p onClick={handleClick} className={isActiveButton2 ? styles.activeFilter : styles.filtros_todas} id="sr">Sin respuesta</p>
+                            <p onClick={handleClick} className={isActiveButton3 ? styles.activeFilter : styles.filtros_todas} id="mp">Mis preguntas</p>
+                            <Link href='/'>
+                                <button className={styles.filtros_container_button}>Publicar nueva pregunta</button>
+                            </Link>
+                        </div>
+                    </div>
                 </div>
             </main>
         </>
