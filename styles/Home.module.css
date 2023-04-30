@@ -1,3 +1,7 @@
+.container{
+  width: auto;
+}
+
 .header{
   display: flex;
   align-items: center;
@@ -48,3 +52,69 @@
   width: 500px;
   outline: none;
 }
+
+.main_container{
+  display: flex;
+  flex-direction: row;
+  gap: 2%;
+}
+
+.filtros{
+  margin-top: 2%;
+  width: 80%;
+}
+
+.filtros_container{
+  display: flex;
+  flex-direction: row;
+  gap: 2%;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.preguntas{
+  font-family: 'Popins', sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.filtros_container_filtro_select{
+  padding: 10px;
+  border-radius: 8px;
+  border: 2px solid black;
+  font-size: 18px;
+}
+
+.filtros_container_button{
+  font-family: 'Popins', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 10px 15px;
+  border-radius: 8px;
+  background-color: #3D3F94;
+  cursor: pointer;
+  color: white;
+  border: none;
+  outline: none;
+}
+
+.filtros_todas{
+  font-family: 'Popins', sans-serif;
+  font-size: 20px;
+  padding: 6px 15px;
+  border-radius: 8px;
+  background-color: #D9D9D9;
+  cursor: pointer;
+  color: #6d6d6d;
+}
+
+.activeFilter{
+  font-family: 'Popins', sans-serif;
+  font-size: 20px;
+  padding: 6px 15px;
+  border-radius: 8px;
+  background-color: #FACF14;
+  cursor: pointer;
+  color: black;
+}
+
