@@ -4,7 +4,6 @@ import eagle from "/public/biglogo.svg"
 import Link from "next/link"
 import Image from "next/image"
 import styles from "@/styles/Home.module.css"
-import Script from "next/script"
 import { useState } from "react"
 
 export default function Homepage() {
@@ -84,7 +83,7 @@ export default function Homepage() {
                             <p onClick={handleClick} className={isActiveButton1 ? styles.activeFilter : styles.filtros_todas} id="todas">Todas</p>
                             <p onClick={handleClick} className={isActiveButton2 ? styles.activeFilter : styles.filtros_todas} id="sr">Sin respuesta</p>
                             <p onClick={handleClick} className={isActiveButton3 ? styles.activeFilter : styles.filtros_todas} id="mp">Mis preguntas</p>
-                            <Link href='/'>
+                            <Link href='/postquestion'>
                                 <button className={styles.filtros_container_button}>Publicar nueva pregunta</button>
                             </Link>
                         </div>
