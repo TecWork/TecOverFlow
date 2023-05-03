@@ -45,7 +45,7 @@ export default function Login() {
                             </div>
                             <Link href="/cam_contraCorreo" className={styles.olvide_link}>¿Olvidaste tu contraseña?</Link> {/* Este link nos dirije a la pantalla de olvide mi contraseña */}
                             <button type="submit" id="button" className={styles.button}>Iniciar sesión</button> {/* Verificar como hacer que te dirija a la pagina solo cuando se cumplen los parametros */}
-                            <label className={styles.no_cuenta}>¿No tienes una cuenta?<Link href="/" className={styles.registrate}> Registrate</Link></label> {/* Este label nos dirije a la pantalla de Sign up */}
+                            <label className={styles.no_cuenta}>¿No tienes una cuenta?<Link href="/signup" className={styles.registrate}> Registrate</Link></label> {/* Este label nos dirije a la pantalla de Sign up */}
                         </form>
                 
                         {/* Toast de error */}
@@ -114,7 +114,7 @@ export default function Login() {
 
                             if (email.validity.valid && password.validity.valid){
                                 console.log("hola");
-                                setTimeout(function(){window.location.href = "/";}, 3000);
+                                setTimeout(function(){window.location.href = "/homepage";}, 3000);
                                 toasts.style.display = "flex";
                                 setTimeout(function(){ toasts.style.display = "none"; }, 3000);
 
