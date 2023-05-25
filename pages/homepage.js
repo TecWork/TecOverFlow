@@ -1,3 +1,4 @@
+import { Redirect } from "next"
 import Head from "next/head"
 import logo from "/public/logo.svg"
 import eagle from "/public/biglogo.svg"
@@ -5,6 +6,7 @@ import Link from "next/link"
 import Image from "next/image"
 import styles from "@/styles/Home.module.css"
 import { useState } from "react"
+
 
 export default function Homepage() {
   const [isActiveButton1, setIsActiveButton1] = useState(false);
