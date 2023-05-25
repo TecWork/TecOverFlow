@@ -7,33 +7,39 @@ import biglogo from "/public/biglogo.svg";
 import Script from "next/script";
 import googlelogo from "/public/googlelog.svg";
 
+import React, { useState } from 'react';
 import { redirect } from 'next/navigation';
 import { auth } from '../firebase'
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 import { useAuthState } from 'react-firebase-hooks/auth'
+import { useRouter } from 'next/router';
+
 import axios from 'axios'
 
 export default function Login() {
 
+
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [user, setUser] = useAuthState(auth)
     const googleAuth = new GoogleAuthProvider();
+    const router = useRouter();
 
     const login = async () => {
         const result = await signInWithPopup(auth, googleAuth);
         const prueba = result.user;
         console.log('sesion iniciada');
         perfil(prueba);
+        setIsLoggedIn(true);
     }
 
     const perfil = async (userData) => {
         const data = userData;
         console.log('data',data);
         const respuesta = await axios.post('/api/auth/login', data)
-        if (respuesta != null){
-            redirect('/login');
-        }
     }
-
+    if (isLoggedIn) {
+        router.push('/homepage');
+    }
     /* useEffect(() => {
     }, [user]) */
 
