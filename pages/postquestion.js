@@ -31,7 +31,7 @@ const Markdown = dynamic(
 
 export default function PostQuestion() {
     const [value, setValue] = useState("**Hello world!!!**");
-    
+
     return (
         <>
             <main>
@@ -82,9 +82,11 @@ export default function PostQuestion() {
                             </div>
                         </div>
                         <div className={styles.QuestionContainer}>
-                            
-                            <div data-color-mode="dark">
-                                <MDEditor value={value} onChange={setValue} />
+                            <div className={styles.preview}>
+                                <Markdown source={value} />
+                            </div>
+                            <div data-color-mode="white" >
+                                <MDEditor  value={value} onChange={setValue} className={styles.editor} style={{ whiteSpace: 'pre-wrap' }}/>
                             </div>
 
                         </div>
