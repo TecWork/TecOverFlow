@@ -5,7 +5,33 @@ import Link from 'next/link';
 import backArrow from '../public/arrowback.svg';
 import publish from '../public/publish.svg';
 
+import "@uiw/react-md-editor/markdown-editor.css";
+import "@uiw/react-markdown-preview/markdown.css";
+import dynamic from "next/dynamic";
+import { useState } from "react";
+
+const MDEditor = dynamic(
+    () => import("@uiw/react-md-editor").then((mod) => mod.default),
+    { ssr: false }
+);
+
+const EditerMarkdown = dynamic(
+    () =>
+      import("@uiw/react-md-editor").then((mod) => {
+        return mod.default.Markdown;
+      }),
+    { ssr: false }
+);
+
+const Markdown = dynamic(
+    () => import("@uiw/react-markdown-preview").then((mod) => mod.default),
+    { ssr: false }
+  );
+
+
 export default function PostQuestion() {
+    const [value, setValue] = useState("**Hello world!!!**");
+
     return (
         <>
             <main>
@@ -56,6 +82,12 @@ export default function PostQuestion() {
                             </div>
                         </div>
                         <div className={styles.QuestionContainer}>
+                            <div className={styles.preview}>
+                                <Markdown source={value} />
+                            </div>
+                            <div data-color-mode="white" >
+                                <MDEditor  value={value} onChange={setValue} className={styles.editor} style={{ whiteSpace: 'pre-wrap' }}/>
+                            </div>
 
                         </div>
                         <div className={styles.FooterContainer}>
