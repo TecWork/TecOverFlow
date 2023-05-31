@@ -131,10 +131,34 @@
     align-items: center;
     justify-content: center;
     gap: 20px;
+    margin: 1% 3% 0 0;
+}
+.PublishButton:hover{
+    cursor: pointer;
+    background-color: #FACF14;
+    color: #3D3F94;
+    border: 2px solid #3D3F94;
 }
 
 .FooterContainer{
     display: flex;
     flex-direction: row;
     justify-content: right;
+}
+
+.editor{
+  height: 100%;
+}
+.QuestionContainer{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 65%;
+}
+
+.preview{
+  height: 100%;
+  margin: 0;
+  overflow: auto;
+  padding: 1%;
 }
