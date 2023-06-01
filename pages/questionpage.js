@@ -1,11 +1,55 @@
+import "@uiw/react-md-editor/markdown-editor.css";
+import "@uiw/react-markdown-preview/markdown.css";
 import styles from '../styles/question.module.css';
 import logo from '../public/logo.svg';
 import Image from 'next/image';
 import Link from 'next/link';
 import backArrow from '../public/arrowback.svg';
 import publish from '../public/publish.svg';
+import axios from 'axios'
+import dynamic from "next/dynamic";
+import { use, useState, useEffect } from "react";
+
+const MDEditor = dynamic(
+    () => import("@uiw/react-md-editor").then((mod) => mod.default),
+    { ssr: false }
+);
+
+const EditerMarkdown = dynamic(
+    () =>
+      import("@uiw/react-md-editor").then((mod) => {
+        return mod.default.Markdown;
+      }),
+    { ssr: false }
+);
+
+const Markdown = dynamic(
+    () => import("@uiw/react-markdown-preview").then((mod) => mod.default),
+    { ssr: false }
+  );
+
 
 export default function QuestionPage() {
+    const [pregunta, setPregunta] = useState('');
+    const [titulo, setTitulo] = useState('');
+    const [materia, setMateria] = useState('');
+    const [usuario, setUsuario] = useState('');
+    const [fecha, setFecha] = useState('');
+    const obtenerPregunta = async () => {
+        const response = await axios.get('/api/questions/getquestion');
+        console.log('Datos de la pregunta:', response.data);
+        return response.data;
+    }
+
+    const handleClick = async () => {
+        const data = await obtenerPregunta();
+        setPregunta(data.data.contenido);
+        setTitulo(data.data.titulo);
+        setMateria(data.data.materia);
+        setUsuario(data.data.nombreUsuario);
+        setFecha(data.data.fecha);     
+    }
+
     return (
         <>
         <main>
@@ -47,25 +91,25 @@ export default function QuestionPage() {
                     <div className={styles.RightColumn}>
                         <div className={styles.DetailsContainer}>
                             <div className={styles.PublishDetails}>
-                                <p className={styles.PublishTitle}>¿Comó puedo centrar un div?</p> {/* Esto se debe cambiar por una consulta al back */}
+                                <p className={styles.PublishTitle}>{titulo}</p> {/* Esto se debe cambiar por una consulta al back */}
                             </div>
                             <div className={styles.UserDetails}>
                                 <div className={styles.User}>
                                     <img className={styles.UserImage} src="https://placekitten.com/g/60/60" alt='User Image'/>
                                 </div>
-                                <p>por <span className={styles.UserName}>Yovanha Fajardo</span></p>
+                                <p>por <span className={styles.UserName}>{usuario}</span></p>
                             </div>
                             <div className={styles.QuestionDetails}>
                                 <p className={styles.responses}>2 respuestas</p> {/* Esto se debe cambiar por una consulta al back */}
-                                <p className={styles.materia}>Desarrollo de aplicaciones web</p> {/* Esto se debe cambiar por una consulta al back */}
+                                <p className={styles.materia}>{materia}</p> {/* Esto se debe cambiar por una consulta al back */}
                                 <p className={styles.published}>Publicado hace 2 horas</p> {/* Esto se debe cambiar por una consulta al back */}
                             </div>
                         </div>
                         <div className={styles.QuestionContainer}>
-
+                            <Markdown source={pregunta} />
                         </div>
                         <div className={styles.FooterContainer}>
-                            <div className={styles.PublishButton}>
+                            <div className={styles.PublishButton} onClick={handleClick} >
                                 <Image src={publish} alt='Publish'/>
                                 <p className={styles.ButtonText}>Responder</p>
                             </div>

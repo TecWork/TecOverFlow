@@ -4,11 +4,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import backArrow from '../public/arrowback.svg';
 import publish from '../public/publish.svg';
-
+import axios from 'axios'
 import "@uiw/react-md-editor/markdown-editor.css";
 import "@uiw/react-markdown-preview/markdown.css";
 import dynamic from "next/dynamic";
-import { useState } from "react";
+import { use, useState, useEffect } from "react";
+import { useRouter } from 'next/router';
+
 
 const MDEditor = dynamic(
     () => import("@uiw/react-md-editor").then((mod) => mod.default),
@@ -30,8 +32,31 @@ const Markdown = dynamic(
 
 
 export default function PostQuestion() {
-    const [value, setValue] = useState("**Hello world!!!**");
+    const [value, setValue] = useState("**Hello world!!!**"); //Para el editor
+    const [selectedValue, setSelectedValue] = useState(''); //Para el select
+    const [inputValue, setInputValue] = useState(''); //Para el input
+    const router = useRouter();
 
+    const handleInputChange = (event) => {
+        setInputValue(event.target.value);
+      } //Para el input
+    const handleSelectChange = (event) => {
+        setSelectedValue(event.target.value);
+    } //Para el select   
+    useEffect(() => {
+        console.log(selectedValue);
+    }, [selectedValue]); //Para el input
+
+
+    const sendQuestion = async () => {
+        const response = await axios.post('/api/questions/postquestion', {
+            titulo: inputValue,
+            contenido: value,
+            materia: selectedValue,
+            fecha: new Date()
+        })
+        router.push('/homepage');
+    }
     return (
         <>
             <main>
@@ -47,7 +72,7 @@ export default function PostQuestion() {
                     </nav>
                     {/* TERMINA NAVEGACION */}
                     <div className={styles.user}>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-circle" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-user-circle" width="30" height="30" viewBox="0 0 24 24" strokeWidth="1.5" stroke="white" fill="none" strokeLinecap="round" strokeLinejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <circle cx="12" cy="12" r="9" />
                             <circle cx="12" cy="10" r="3" />
@@ -73,11 +98,12 @@ export default function PostQuestion() {
                                 <p>por <span className={styles.UserName}>Yovanha Fajardo</span></p>
                             </div>
                             <div className={styles.QuestionDetails}>
-                                <input className={styles.Title} type="text" placeholder="Escriba la pregunta de forma breve"/>
-                                <select className={styles.Select}>
-                                    <option value="1" select>Materia</option>
-                                    <option value="2">DAW</option>
-                                    <option value="3">Base de datos</option>.
+                                <input className={styles.Title} value={inputValue} onChange={handleInputChange} type="text" placeholder="Escriba la pregunta de forma breve"/>
+                                <select className={styles.Select} value={selectedValue} onChange={handleSelectChange}>
+                                    <option value="" disabled selected>Selecciona una materia</option>
+                                    <option value="Topico de Redes" select>Topico de Redes</option>
+                                    <option value="Desarrollo de aplicaciones web">Desarrollo de aplicaciones web</option>
+                                    <option value="Base de datos">Base de datos</option>.
                                 </select>
                             </div>
                         </div>
@@ -91,7 +117,7 @@ export default function PostQuestion() {
 
                         </div>
                         <div className={styles.FooterContainer}>
-                            <div className={styles.PublishButton}>
+                            <div className={styles.PublishButton} onClick={sendQuestion}>
                                 <Image src={publish} alt='Publish'/>
                                 <p className={styles.ButtonText}>Publicar</p>
                             </div>
