@@ -35,19 +35,20 @@ export default function QuestionPage() {
     const [materia, setMateria] = useState('');
     const [usuario, setUsuario] = useState('');
     const [fecha, setFecha] = useState('');
+
     const obtenerPregunta = async () => {
-        const response = await axios.get('/api/questions/getquestion');
-        console.log('Datos de la pregunta:', response.data);
-        return response.data;
+        const response = await axios.get('/api/questions/getquestion')
+        console.log('Datos de la pregunta:', response.data)
+        return response.data
     }
 
     const handleClick = async () => {
-        const data = await obtenerPregunta();
-        setPregunta(data.data.contenido);
-        setTitulo(data.data.titulo);
-        setMateria(data.data.materia);
-        setUsuario(data.data.nombreUsuario);
-        setFecha(data.data.fecha);     
+        const data = await obtenerPregunta()
+        setPregunta(data.data.contenido)
+        setTitulo(data.data.titulo)
+        setMateria(data.data.materia)
+        setUsuario(data.data.nombreUsuario)
+        setFecha(data.data.fecha) 
     }
 
     return (

@@ -8,20 +8,13 @@ import axios from 'axios'
 import "@uiw/react-md-editor/markdown-editor.css";
 import "@uiw/react-markdown-preview/markdown.css";
 import dynamic from "next/dynamic";
-import { use, useState, useEffect } from "react";
+import { use, useState, useEffect, useRef } from "react";
 import { useRouter } from 'next/router';
+import { and } from 'firebase/firestore';
 
 
 const MDEditor = dynamic(
     () => import("@uiw/react-md-editor").then((mod) => mod.default),
-    { ssr: false }
-);
-
-const EditerMarkdown = dynamic(
-    () =>
-      import("@uiw/react-md-editor").then((mod) => {
-        return mod.default.Markdown;
-      }),
     { ssr: false }
 );
 
@@ -35,7 +28,13 @@ export default function PostQuestion() {
     const [value, setValue] = useState("**Hello world!!!**"); //Para el editor
     const [selectedValue, setSelectedValue] = useState(''); //Para el select
     const [inputValue, setInputValue] = useState(''); //Para el input
+    const [user, setUser] = useState({}); //Para el user
     const router = useRouter();
+    
+    const Titulo = useRef();
+    const TituloError = useRef();
+    const MateriaError = useRef();
+    const SelectError = useRef();
 
     const handleInputChange = (event) => {
         setInputValue(event.target.value);
@@ -43,19 +42,57 @@ export default function PostQuestion() {
     const handleSelectChange = (event) => {
         setSelectedValue(event.target.value);
     } //Para el select   
+
+    const requestPorfile = async () => {
+        const response = await axios.get('/api/auth/getPorfile')
+        setUser(response.data) ;
+    }
     useEffect(() => {
-        console.log(selectedValue);
+        requestPorfile();
+    }, []);
+
+    useEffect(() => {
+        if (selectedValue !== '') {
+            SelectError.current.className = styles.Select;
+            MateriaError.current.className = styles.errorTi;
+        }
     }, [selectedValue]); //Para el input
+    useEffect(() => {
+        if (inputValue !== '') {
+            Titulo.current.className = styles.Title;
+            TituloError.current.className = styles.errorTi;
+        }
+    }, [inputValue]); //Para el input
+
 
 
     const sendQuestion = async () => {
-        const response = await axios.post('/api/questions/postquestion', {
-            titulo: inputValue,
-            contenido: value,
-            materia: selectedValue,
-            fecha: new Date()
-        })
-        router.push('/homepage');
+        /* Titulo.current.className = styles.errorTitle;
+        TituloError.current.className = styles.showErrorTtle;
+        MateriaError.current.className = styles.showErrorMateira;
+        SelectError.current.className = styles.errorSelect; */
+
+        if (inputValue === '' &&  selectedValue === '') {
+            Titulo.current.className = styles.errorTitle;
+            TituloError.current.className = styles.showErrorTtle;
+            MateriaError.current.className = styles.showErrorMateira;
+            SelectError.current.className = styles.errorSelect;
+        }if (inputValue === '') {
+            Titulo.current.className = styles.errorTitle;
+            TituloError.current.className = styles.showErrorTtle;
+        }if (selectedValue === '') {
+            MateriaError.current.className = styles.showErrorMateira;
+            SelectError.current.className = styles.errorSelect;
+        }else{
+            const response = await axios.post('/api/questions/postquestion', {
+                titulo: inputValue,
+                contenido: value,
+                materia: selectedValue,
+                fecha: new Date()
+            })
+            router.push('/homepage');
+        }
+        
     }
     return (
         <>
@@ -95,16 +132,20 @@ export default function PostQuestion() {
                                 <div className={styles.User}>
                                     <img className={styles.UserImage} src="https://placekitten.com/g/60/60" alt='User Image'/>
                                 </div>
-                                <p>por <span className={styles.UserName}>Yovanha Fajardo</span></p>
+                                <p>por <span className={styles.UserName}>{user.name}</span></p>
                             </div>
                             <div className={styles.QuestionDetails}>
-                                <input className={styles.Title} value={inputValue} onChange={handleInputChange} type="text" placeholder="Escriba la pregunta de forma breve"/>
-                                <select className={styles.Select} value={selectedValue} onChange={handleSelectChange}>
-                                    <option value="" disabled selected>Selecciona una materia</option>
-                                    <option value="Topico de Redes" select>Topico de Redes</option>
-                                    <option value="Desarrollo de aplicaciones web">Desarrollo de aplicaciones web</option>
-                                    <option value="Base de datos">Base de datos</option>.
-                                </select>
+                                <input ref={Titulo} className={styles.Title} value={inputValue} onChange={handleInputChange} type="text" placeholder="Escriba la pregunta de forma breve"/>
+                                <p ref={TituloError} className={styles.errorTi}><span className={styles.x}>X</span> Ingrese el Titulo de la Pregunta</p>
+                                <div className={styles.materias}>
+                                    <select ref={SelectError} className={styles.Select} value={selectedValue} onChange={handleSelectChange}>
+                                        <option value="" disabled selected>Selecciona una materia</option>
+                                        <option value="Topico de Redes" select>Topico de Redes</option>
+                                        <option value="Desarrollo de aplicaciones web">Desarrollo de aplicaciones web</option>
+                                        <option value="Base de datos">Base de datos</option>.
+                                    </select>
+                                    <p ref={MateriaError} className={styles.errorTi}><span className={styles.x}>X</span> Ingrese la materia</p>
+                                </div>
                             </div>
                         </div>
                         <div className={styles.QuestionContainer}>
