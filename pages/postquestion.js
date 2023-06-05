@@ -30,6 +30,7 @@ export default function PostQuestion() {
     const [inputValue, setInputValue] = useState(''); //Para el input
     const [user, setUser] = useState({}); //Para el user
     const router = useRouter();
+    const [showUserDropdown, setShowUserDropdown] = useState(false);
     
     const Titulo = useRef();
     const TituloError = useRef();
@@ -64,7 +65,15 @@ export default function PostQuestion() {
         }
     }, [inputValue]); //Para el input
 
+    const handleClickUser = () => {
+        setShowUserDropdown(!showUserDropdown);
+    }
 
+    const handleLogout = async () => {
+        localStorage.removeItem('token');
+        setUser({});
+        window.location.href = '/';
+    }
 
     const sendQuestion = async () => {
         /* Titulo.current.className = styles.errorTitle;
@@ -108,7 +117,7 @@ export default function PostQuestion() {
                         </div>
                     </nav>
                     {/* TERMINA NAVEGACION */}
-                    <div className={styles.user}>
+                    <div className={styles.user} onClick={handleClickUser}>
                         <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-user-circle" width="30" height="30" viewBox="0 0 24 24" strokeWidth="1.5" stroke="white" fill="none" strokeLinecap="round" strokeLinejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <circle cx="12" cy="12" r="9" />
@@ -116,6 +125,22 @@ export default function PostQuestion() {
                             <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
                         </svg>
                     </div>
+                    {showUserDropdown && (
+                        <div className={styles.userDropdown}>
+                            <div>
+                                <p>{user.name}</p>
+                            </div>
+                            <div className={styles.userLogout}>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#fff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M10 8v-2a2 2 0 0 1 2 -2h7a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-7a2 2 0 0 1 -2 -2v-2" />
+                                    <path d="M15 12h-12l3 -3" />
+                                    <path d="M6 15l-3 -3" />
+                                </svg>
+                                <button onClick={handleLogout}>Logout</button>
+                            </div>
+                        </div>
+                    )}
                 </header>
                 <div className={styles.MainContainer}>
                     <div className={styles.LeftColumn}>

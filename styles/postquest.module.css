@@ -26,6 +26,26 @@
 
 }
 
+.userDropdown {
+  position: absolute;
+  top: 12%;
+  right: 1%;
+  background-color: #D71B3D;
+  padding: 1rem;
+  border-radius: 10px;
+  font-weight: bold;
+  color: white;
+}
+
+.userLogout{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  cursor: pointer;
+  margin-top: 10px;
+  justify-content: center;
+}
+
 .logo{
   width: 70px;
   height: 70px;
