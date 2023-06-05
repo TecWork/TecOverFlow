@@ -8,6 +8,5 @@ export default async function DisplayQuestions(req, res) {
     preguntasSnapshot.forEach((doc) => {
       preguntas[doc.id] = doc.data();
     });
-    console.log(preguntas)
     return res.json({preguntas});
   }

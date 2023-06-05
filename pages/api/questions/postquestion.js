@@ -23,7 +23,7 @@ export default function PostQuestion(req, res) {
         usuario: user.Id
     };
     try {
-        const docRef = setDoc(doc(db, "Preguntas", titulo), {
+        const docRef = setDoc(doc(db, "Preguntas", id), {
             id: id,
             titulo: titulo,
             materia: materia,

@@ -15,7 +15,7 @@
 }
 
 .titulo{
-  font-size: 35px;
+  font-size: 3em;
   font-weight: 700;
   margin-left: 15px;
 }
@@ -148,6 +148,7 @@
 .respuestas{
   font-weight: 400;
   margin-right: 3%;
+  width: 15%;
 }
 .titulo{
   color: #3D3F94;

@@ -8,7 +8,12 @@ import backArrow from '../public/arrowback.svg';
 import publish from '../public/publish.svg';
 import axios from 'axios'
 import dynamic from "next/dynamic";
-import { use, useState, useEffect } from "react";
+import { use, useState, useEffect} from "react";
+import { useRouter } from 'next/router';
+import { ZCOOL_KuaiLe } from "next/font/google";
+import { data } from "autoprefixer";
+
+import leerDoc from "./api/questions/getquestion";
 
 const MDEditor = dynamic(
     () => import("@uiw/react-md-editor").then((mod) => mod.default),
@@ -30,14 +35,23 @@ const Markdown = dynamic(
 
 
 export default function QuestionPage() {
+    const router = useRouter();
+    const { id } = router.query; // id de la pregunta
+    const [value, setValue] = useState("**Hello world!!!**"); //Para el editor
     const [pregunta, setPregunta] = useState('');
     const [titulo, setTitulo] = useState('');
     const [materia, setMateria] = useState('');
     const [usuario, setUsuario] = useState('');
     const [fecha, setFecha] = useState('');
+    const [botonHabilitado, setBotonHabilitado] = useState(false);
+
 
     const obtenerPregunta = async () => {
-        const response = await axios.get('/api/questions/getquestion')
+        const response = await axios.get('/api/questions/getquestion', {
+            params: {
+                id: id
+            }
+        })
         console.log('Datos de la pregunta:', response.data)
         return response.data
     }
@@ -49,7 +63,19 @@ export default function QuestionPage() {
         setMateria(data.data.materia)
         setUsuario(data.data.nombreUsuario)
         setFecha(data.data.fecha) 
+    };
+
+    const cargarPagina = () => {
+        console.log('hola')
     }
+    
+    useEffect(() => {
+        if (id) {
+            console.log('entro')
+            console.log(id)
+            handleClick()
+          }
+    }, [id]);
 
     return (
         <>
@@ -66,7 +92,7 @@ export default function QuestionPage() {
                 </nav>
                 {/* TERMINA NAVEGACION */}
                 <div className={styles.user}>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-circle" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-user-circle" width="30" height="30" viewBox="0 0 24 24" strokeWidth="1.5" stroke="white" fill="none" strokeLinecap="round" strokeLinejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                         <circle cx="12" cy="12" r="9" />
                         <circle cx="12" cy="10" r="3" />
@@ -109,8 +135,30 @@ export default function QuestionPage() {
                         <div className={styles.QuestionContainer}>
                             <Markdown source={pregunta} />
                         </div>
+                        <div className={styles.ResponsesContainer}>
+                            <div className={styles.Response}>
+                                
+                                <div className={styles.UserRes}>
+                                    <h3>Respuesta de</h3>
+                                    <img className={styles.UserImageRes} src="https://placekitten.com/g/60/60" alt='User Image'/>
+                                    <p className={styles.UserName}>Antonio Galvan Rojas</p>
+                                    <p className={styles.publishedRes}>Publicado hace 2 horas</p> 
+                                </div>
+                                <div className={styles.ResponseDetails}>
+                                    <div className={styles.ResponseContent}>
+                                        <Markdown source={pregunta} />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className={styles.editorCont}>
+                            <div data-color-mode="white" >
+                                <MDEditor  value={value} onChange={setValue} className={styles.editor} style={{ whiteSpace: 'pre-wrap' }}/>
+                            </div>
+                        </div>
                         <div className={styles.FooterContainer}>
-                            <div className={styles.PublishButton} onClick={handleClick} >
+                            
+                            <div className={styles.PublishButton} onClick={handleClick} disabled={!botonHabilitado} >
                                 <Image src={publish} alt='Publish'/>
                                 <p className={styles.ButtonText}>Responder</p>
                             </div>
@@ -120,4 +168,4 @@ export default function QuestionPage() {
         </main>
         </>
     )
-};
+}

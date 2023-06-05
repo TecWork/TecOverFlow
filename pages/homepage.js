@@ -60,7 +60,7 @@ export default function Homepage() {
                         <div className='navbar-brand'>
                             <Link className='nav-link_icon' href='/'>
                                 <Image className={styles.logo} src={logo} alt='Tec OverFlow'/>
-                                <h1 className={styles.titulo}>Tec Overflow</h1>
+                                <h1 className='titulo'>Tec Overflow</h1>
                             </Link>
                         </div>
                     </nav>
@@ -110,13 +110,15 @@ export default function Homepage() {
                         </div>
                         <section className={styles.preguntaSect}>
                             {Object.values(preguntas).map((pregunta) => (
-                                <div key={pregunta.id} className={styles.pregunta}>
-                                    <p className={styles.respuestas}>0 Respuestas</p>
-                                    <div className={styles.preguntainfo}>
-                                        <h2 className={styles.titulo}>{pregunta.titulo}</h2>
-                                        <p className={styles.materia}>{pregunta.materia}</p>
+                                <a href={`/questionpage?id=${pregunta.id}&materia=${pregunta.materia}&titulo=${pregunta.titulo}&creador=${pregunta.nombreUsuario}`}>
+                                    <div key={pregunta.id} className={styles.pregunta}>
+                                        <p className={styles.respuestas}>0 Respuestas</p>
+                                        <div className={styles.preguntainfo}>
+                                            <h2 className={styles.titulo}>{pregunta.titulo}</h2>
+                                            <p className={styles.materia}>{pregunta.materia}</p>
+                                        </div>
                                     </div>
-                                </div>
+                                </a>
                             ))}
                         </section>
 
