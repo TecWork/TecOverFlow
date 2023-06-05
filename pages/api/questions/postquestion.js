@@ -15,7 +15,6 @@ export default function PostQuestion(req, res) {
     const { titulo, materia, contenido } = req.body;
     const currentDate = new Date();
     const data = {
-
         titulo: titulo,
         materia: materia,
         contenido: contenido,
@@ -31,6 +30,8 @@ export default function PostQuestion(req, res) {
             fecha: currentDate,
             usuario: user.Id,
             nombreUsuario: user.NomCompleto,
+            photoURL: user.Foto,
+            cantRespuestas: 0,
         });
         console.log("Document written with ID: ", docRef.id);
         return res.status(200).json({ message: 'Pregunta publicada' })

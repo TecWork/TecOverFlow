@@ -6,10 +6,8 @@ export default  async function leerDoc(req,res)  {
 
   getDoc(doc(db, "Preguntas", id )).then(docSnap => {
       if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data());
+        /* console.log("Document data:", docSnap.data()); */
         const data = docSnap.data();
-        console.log(data)
-        console.log('query', id)
         return res.json({data})
       } else {
         console.log("No such document!");

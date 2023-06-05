@@ -10,10 +10,9 @@ import axios from 'axios'
 import dynamic from "next/dynamic";
 import { use, useState, useEffect} from "react";
 import { useRouter } from 'next/router';
-import { ZCOOL_KuaiLe } from "next/font/google";
-import { data } from "autoprefixer";
 
 import leerDoc from "./api/questions/getquestion";
+import { data } from "autoprefixer";
 
 const MDEditor = dynamic(
     () => import("@uiw/react-md-editor").then((mod) => mod.default),
@@ -36,15 +35,31 @@ const Markdown = dynamic(
 
 export default function QuestionPage() {
     const router = useRouter();
-    const { id } = router.query; // id de la pregunta
+    const { id, cantRespuestas } = router.query; // id de la pregunta
     const [value, setValue] = useState("**Hello world!!!**"); //Para el editor
     const [pregunta, setPregunta] = useState('');
     const [titulo, setTitulo] = useState('');
     const [materia, setMateria] = useState('');
     const [usuario, setUsuario] = useState('');
-    const [fecha, setFecha] = useState('');
     const [botonHabilitado, setBotonHabilitado] = useState(false);
+    const [fecha, setFecha] = useState('');
 
+    const [respuestas, setRespuestas] = useState([]);
+
+    const displayResponses = async () => {
+        const response = await axios.get('/api/questions/displayResponses', {
+            params: {  
+                Id: id
+            }
+        })
+        setRespuestas(response.data.respuestas);
+    }   
+        
+
+
+    useEffect(() => {
+        console.log(respuestas)
+    }, [respuestas]);
 
     const obtenerPregunta = async () => {
         const response = await axios.get('/api/questions/getquestion', {
@@ -52,8 +67,17 @@ export default function QuestionPage() {
                 id: id
             }
         })
-        console.log('Datos de la pregunta:', response.data)
         return response.data
+    }
+
+    const sendRespnse = async () => {
+        const data = {
+            idPre: id,
+            contenidoPre: value,
+            cantRespuestas: cantRespuestas
+        }
+        const response = await axios.post('/api/questions/postResponse', data)
+        router.reload();
     }
 
     const handleClick = async () => {
@@ -64,20 +88,23 @@ export default function QuestionPage() {
         setUsuario(data.data.nombreUsuario)
         setFecha(data.data.fecha) 
     };
-
-    const cargarPagina = () => {
-        console.log('hola')
-    }
     
+    const DisplayResponses = async () => {
+        const response = await axios.get('/api/questions/displayResponses')
+        setRespuestas(response.data.respuestas)
+        console.log(respuestas)
+    }   
+
     useEffect(() => {
         if (id) {
-            console.log('entro')
-            console.log(id)
             handleClick()
-          }
+            displayResponses();
+        }
     }, [id]);
 
-    return (
+   
+
+    return (    
         <>
         <main>
             <header className={styles.header}>
@@ -127,7 +154,7 @@ export default function QuestionPage() {
                                 <p>por <span className={styles.UserName}>{usuario}</span></p>
                             </div>
                             <div className={styles.QuestionDetails}>
-                                <p className={styles.responses}>2 respuestas</p> {/* Esto se debe cambiar por una consulta al back */}
+                                <p className={styles.responses}>{cantRespuestas} respuestas</p> {/* Esto se debe cambiar por una consulta al back */}
                                 <p className={styles.materia}>{materia}</p> {/* Esto se debe cambiar por una consulta al back */}
                                 <p className={styles.published}>Publicado hace 2 horas</p> {/* Esto se debe cambiar por una consulta al back */}
                             </div>
@@ -136,20 +163,23 @@ export default function QuestionPage() {
                             <Markdown source={pregunta} />
                         </div>
                         <div className={styles.ResponsesContainer}>
-                            <div className={styles.Response}>
-                                
-                                <div className={styles.UserRes}>
-                                    <h3>Respuesta de</h3>
-                                    <img className={styles.UserImageRes} src="https://placekitten.com/g/60/60" alt='User Image'/>
-                                    <p className={styles.UserName}>Antonio Galvan Rojas</p>
-                                    <p className={styles.publishedRes}>Publicado hace 2 horas</p> 
-                                </div>
-                                <div className={styles.ResponseDetails}>
-                                    <div className={styles.ResponseContent}>
-                                        <Markdown source={pregunta} />
+                            {Object.values(respuestas).map((respuesta) => (
+                                <div key={respuesta.id} className={styles.Response}>
+                                    <div className={styles.UserRes}>
+                                        <h3>Respuesta de</h3>
+                                        {respuesta.photoUrl}
+                                        <img className={styles.UserImageRes} src={respuesta.photoURL} alt=''/>
+                                        <p className={styles.UserName}>{respuesta.nombreUsuario}</p>
+                                        {/* <p className={styles.publishedRes}>Publicado hace 2 horas</p> */}
+                                        <h4>{respuesta.photoUrl}</h4>
+                                    </div>
+                                    <div className={styles.ResponseDetails}>
+                                        <div className={styles.ResponseContent}>
+                                            <Markdown source={respuesta.contenido} />
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            ))}
                         </div>
                         <div className={styles.editorCont}>
                             <div data-color-mode="white" >
@@ -158,7 +188,7 @@ export default function QuestionPage() {
                         </div>
                         <div className={styles.FooterContainer}>
                             
-                            <div className={styles.PublishButton} onClick={handleClick} disabled={!botonHabilitado} >
+                            <div className={styles.PublishButton} onClick={sendRespnse} disabled={!botonHabilitado} >
                                 <Image src={publish} alt='Publish'/>
                                 <p className={styles.ButtonText}>Responder</p>
                             </div>

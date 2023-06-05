@@ -192,8 +192,8 @@
   display: flex;
   flex-direction: column;
   height: 40%;
-  border-bottom: 3px solid #CFCFCF;
-
+  /* border-bottom: 3px solid #CFCFCF; */
+  height: auto;
 }
 .UserRes{
   display: flex;
@@ -201,7 +201,7 @@
   width: 100%;
   padding-top: 1%;
   padding-bottom: 1%;
-  border-bottom: 3px solid #CFCFCF;
+  border-bottom: 1px solid #CFCFCF;
 }
 .UserRes h3{
   margin: 1%;
@@ -231,4 +231,7 @@
 
 .editorCont{
   margin-top: 1%;
+}
+.Response{
+  border-bottom: 3px solid #CFCFCF;
 }

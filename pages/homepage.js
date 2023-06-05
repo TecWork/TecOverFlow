@@ -21,7 +21,6 @@ export default function Homepage() {
     const displayQuestions = async () => {
         const response = await axios.get('/api/questions/displayquestions')
         setPreguntas(response.data.preguntas);
-        console.log(preguntas)
     }   
     useEffect(() => {
         displayQuestions();
