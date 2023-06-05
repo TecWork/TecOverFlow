@@ -173,12 +173,17 @@
   text-align: center;
   align-items: center;
 }
+.pregunta p{
+  width: 20vh;
+  font-size: 1em;
+}
 .preguntainfo{
   display: flex;
   flex-direction: column;
   text-align: start;
   width: 100%;
 }
+
 .respuestas{
   font-weight: 400;
   margin-right: 3%;
