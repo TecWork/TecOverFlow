@@ -36,6 +36,7 @@ export default function Homepage() {
 
     useEffect(() => {
         console.log(preguntas)
+        requestPorfile();
     }, [preguntas]);
 
     const handleSeachInputChange = (event) => {
