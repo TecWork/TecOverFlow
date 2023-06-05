@@ -18,7 +18,6 @@ export default function Homepage() {
     const displayQuestions = async () => {
         const response = await axios.get('/api/questions/displayquestions')
         setPreguntas(response.data.preguntas);
-        console.log(preguntas)
     }   
     useEffect(() => {
         displayQuestions();
@@ -110,7 +109,7 @@ export default function Homepage() {
                         </div>
                         <section className={styles.preguntaSect}>
                             {Object.values(preguntas).map((pregunta) => (
-                                <a href={`/questionpage?id=${pregunta.id}&materia=${pregunta.materia}&titulo=${pregunta.titulo}&creador=${pregunta.nombreUsuario}`}>
+                                <a href={`/questionpage?id=${pregunta.id}&cantRespuestas=${pregunta.cantRespuestas}&materia=${pregunta.materia}&titulo=${pregunta.titulo}&creador=${pregunta.nombreUsuario}`}>
                                     <div key={pregunta.id} className={styles.pregunta}>
                                         <p className={styles.respuestas}>0 Respuestas</p>
                                         <div className={styles.preguntainfo}>

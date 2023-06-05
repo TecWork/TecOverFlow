@@ -71,7 +71,6 @@ export default function PostQuestion() {
         TituloError.current.className = styles.showErrorTtle;
         MateriaError.current.className = styles.showErrorMateira;
         SelectError.current.className = styles.errorSelect; */
-
         if (inputValue === '' &&  selectedValue === '') {
             Titulo.current.className = styles.errorTitle;
             TituloError.current.className = styles.showErrorTtle;
@@ -83,7 +82,7 @@ export default function PostQuestion() {
         }if (selectedValue === '') {
             MateriaError.current.className = styles.showErrorMateira;
             SelectError.current.className = styles.errorSelect;
-        }else{
+        }if (inputValue !== '' && selectedValue !== ''){
             const response = await axios.post('/api/questions/postquestion', {
                 titulo: inputValue,
                 contenido: value,
