@@ -5,10 +5,11 @@ import logo from '../public/logo.svg';
 import Image from 'next/image';
 import Link from 'next/link';
 import backArrow from '../public/arrowback.svg';
+import deleteimg from '../public/deleteimg.svg';
 import publish from '../public/publish.svg';
 import axios from 'axios'
 import dynamic from "next/dynamic";
-import { use, useState, useEffect} from "react";
+import { use, useState, useEffect, useRef} from "react";
 import { useRouter } from 'next/router';
 
 import leerDoc from "./api/questions/getquestion";
@@ -35,7 +36,7 @@ const Markdown = dynamic(
 
 export default function QuestionPage() {
     const router = useRouter();
-    const { id, cantRespuestas } = router.query; // id de la pregunta
+    const { id, cantRespuestas, creador } = router.query; // id de la pregunta
     const [value, setValue] = useState("**Hello world!!!**"); //Para el editor
     const [pregunta, setPregunta] = useState('');
     const [titulo, setTitulo] = useState('');
@@ -43,8 +44,11 @@ export default function QuestionPage() {
     const [usuario, setUsuario] = useState('');
     const [botonHabilitado, setBotonHabilitado] = useState(false);
     const [fecha, setFecha] = useState('');
-
+    const [user, setUser] = useState({}); //Para el user
     const [respuestas, setRespuestas] = useState([]);
+    const [cantidadRespuestas, setCantidadRespuestas] = useState(0);
+    const botonEditar = useRef();
+    const deleteButton = useRef();
 
     const displayResponses = async () => {
         const response = await axios.get('/api/questions/displayResponses', {
@@ -53,12 +57,36 @@ export default function QuestionPage() {
             }
         })
         setRespuestas(response.data.respuestas);
-    }   
-        
+    } 
 
+    const deleteQuestion = async () => {
+        const response = await axios.delete('/api/questions/deletequestion', {
+            params: {
+                id: id
+            }
+        })
+        router.push('/homepage')
+    }
+        
+    const requestPorfile = async () => {
+        const response = await axios.get('/api/auth/getPorfile')
+        setUser(response.data);
+        console.log(response.data)
+    }
+    useEffect(() => {
+        requestPorfile();
+    }, []);
 
     useEffect(() => {
         console.log(respuestas)
+        if (creador === user.name) {
+            botonEditar.current.className = styles.aEdit;
+            deleteButton.current.className = styles.aEdit;
+        }else{
+            botonEditar.current.className = styles.aEditD;
+            deleteButton.current.className = styles.aEditD;
+        }
+        console.log(creador, 'creador', user.name)
     }, [respuestas]);
 
     const obtenerPregunta = async () => {
@@ -77,6 +105,7 @@ export default function QuestionPage() {
             cantRespuestas: cantRespuestas
         }
         const response = await axios.post('/api/questions/postResponse', data)
+        setCantidadRespuestas(cantidadRespuestas + 1)
         router.reload();
     }
 
@@ -95,16 +124,18 @@ export default function QuestionPage() {
         console.log(respuestas)
     }   
 
+    
+
     useEffect(() => {
         if (id) {
             handleClick()
             displayResponses();
         }
+ 
     }, [id]);
 
-   
 
-    return (    
+    return (     
         <>
         <main>
             <header className={styles.header}>
@@ -135,11 +166,19 @@ export default function QuestionPage() {
                             </Link>
                             <p className={styles.ButtonText}>Volver</p>
                         </div>
-                        <div className={styles.EditButton}>
-                        <Link href='/homepage'>
-                                <Image src={backArrow} alt='Back Arrow'/>
-                            </Link>
-                            <p className={styles.ButtonText}>Editar</p>
+                        <a ref={botonEditar} href={`/editquestion?id=${id}&usuario=${usuario}&materia=${materia}&titulo=${titulo}`} className={styles.aEditD}>
+                            <div className={styles.EditButton}>
+                        
+                                    <Image src={backArrow} alt='Back Arrow'/>
+                            
+                                <p className={styles.ButtonText}>Editar</p>
+                            </div>
+                        </a>
+                        <div ref={deleteButton} className={styles.aEditD} onClick={deleteQuestion}>
+                            <div className={styles.DeleteButton}>
+                                <Image src={deleteimg} className={styles.svgdelete} alt='Back Arrow'/>
+                                <p className={styles.ButtonText}>Eliminar</p>
+                            </div>
                         </div>
                     </div>
                     <div className={styles.RightColumn}>
@@ -149,7 +188,7 @@ export default function QuestionPage() {
                             </div>
                             <div className={styles.UserDetails}>
                                 <div className={styles.User}>
-                                    <img className={styles.UserImage} src="https://placekitten.com/g/60/60" alt='User Image'/>
+                                    <img className={styles.UserImage} src={user.photo} alt='User Image'/>
                                 </div>
                                 <p>por <span className={styles.UserName}>{usuario}</span></p>
                             </div>

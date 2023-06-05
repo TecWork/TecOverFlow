@@ -29,14 +29,13 @@ export default function Homepage() {
     const requestPorfile = async () => {
         const response = await axios.get('/api/auth/getPorfile')
         setUser(response.data) ;
-        console.log(user)
     }
     useEffect(() => {
         requestPorfile();
     }, []);
 
     useEffect(() => {
-        /* console.log(preguntas) */
+        console.log(preguntas)
     }, [preguntas]);
 
     const handleSeachInputChange = (event) => {
@@ -53,9 +52,7 @@ export default function Homepage() {
 
     const handleLogout = async () => {
         localStorage.removeItem('authToken');
-
         setUser({});
-
         window.location.href = '/';
     }
 
@@ -178,7 +175,7 @@ export default function Homepage() {
                             );
                             })
                             .map((pregunta) => (
-                                <a key={pregunta.id} href={`/questionpage?id=${pregunta.id}&materia=${pregunta.materia}&titulo=${pregunta.titulo}&creador=${pregunta.nombreUsuario}&photo=${pregunta.photoURL}`}>
+                                <a key={pregunta.id} href={`/questionpage?id=${pregunta.id}&cantRespuestas=${pregunta.cantRespuestas}&materia=${pregunta.materia}&titulo=${pregunta.titulo}&creador=${pregunta.nombreUsuario}&photo=${pregunta.photoURL}`}>
                                     <div key={pregunta.id} className={styles.pregunta}>
                                         <p className={styles.respuestas}>{pregunta.cantRespuestas} Respuestas</p>
                                         <div className={styles.preguntainfo}>

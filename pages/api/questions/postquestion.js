@@ -14,13 +14,7 @@ export default function PostQuestion(req, res) {
     const id = uuidv4();
     const { titulo, materia, contenido } = req.body;
     const currentDate = new Date();
-    const data = {
-        titulo: titulo,
-        materia: materia,
-        contenido: contenido,
-        fecha: currentDate,
-        usuario: user.Id
-    };
+    let cantidadRespuestas = 0;
     try {
         const docRef = setDoc(doc(db, "Preguntas", id), {
             id: id,
@@ -31,7 +25,7 @@ export default function PostQuestion(req, res) {
             usuario: user.Id,
             nombreUsuario: user.NomCompleto,
             photoURL: user.Foto,
-            cantRespuestas: 0,
+            cantRespuestas: cantidadRespuestas,
         });
         console.log("Document written with ID: ", docRef.id);
         return res.status(200).json({ message: 'Pregunta publicada' })

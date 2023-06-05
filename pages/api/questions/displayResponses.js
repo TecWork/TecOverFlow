@@ -3,7 +3,6 @@ import { db } from "../../../firebase";
 
 export default async function DisplayResponses(req, res) {
     const { Id } = req.query;
-    console.log(Id)
     /* const respuestasRef = collection(db, "Respuestas");
     const respuestasSnapshot = await getDocs(respuestasRef);
     const respuestas = {};
@@ -20,6 +19,5 @@ export default async function DisplayResponses(req, res) {
       respuestas[doc.id] = doc.data();
     }
     );
-    console.log(respuestas)
     return res.json({respuestas});
   }

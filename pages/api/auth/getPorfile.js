@@ -11,7 +11,8 @@ export default function profileHandler(req, res) {
 
     try {
         const user = verify(TecOverFlowT, 'secretkey')
-        return res.json({email: user.Email, name: user.NomCompleto})
+        console.log(user, 'user')
+        return res.json({email: user.Email, name: user.NomCompleto, photo: user.Foto})
     } catch (err) {
         return res.status(401).json({ error: 'unauthorized' })
     }

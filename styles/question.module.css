@@ -224,6 +224,7 @@
 }
 .UserName{
   width: 190px;
+  font-size: 0.9em;
 }
 .ResponseContent{
   padding: 1%;
@@ -234,4 +235,30 @@
 }
 .Response{
   border-bottom: 3px solid #CFCFCF;
+}
+.aEdit{
+  display: flex;
+}
+.aEditD{
+  display: none;
+}
+
+.DeleteButton{
+  background-color: #D71B3D;
+  color: white;
+  border-radius: 10px;
+  width: 148px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+  gap: 20px;
+}
+
+.svgdelete{
+  width: 30px;
+  height: 30px;
+  font-weight: 600;
+  color: white;
 }
