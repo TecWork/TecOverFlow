@@ -82,7 +82,11 @@ export default function PostQuestion() {
         }if (selectedValue === '') {
             MateriaError.current.className = styles.showErrorMateira;
             SelectError.current.className = styles.errorSelect;
-        }if (inputValue !== '' && selectedValue !== ''){
+<<<<<<< HEAD
+        }if(inputValue !== '' && selectedValue !== ''){
+=======
+        }if(inputValue !== '' && selectedValue !== ''){
+>>>>>>> main
             const response = await axios.post('/api/questions/postquestion', {
                 titulo: inputValue,
                 contenido: value,
@@ -134,7 +138,7 @@ export default function PostQuestion() {
                                 <p>por <span className={styles.UserName}>{user.name}</span></p>
                             </div>
                             <div className={styles.QuestionDetails}>
-                                <input ref={Titulo} className={styles.Title} value={inputValue} onChange={handleInputChange} type="text" placeholder="Escriba la pregunta de forma breve"/>
+                                <input ref={Titulo} className={styles.Title} value={inputValue} onChange={handleInputChange} type="text" placeholder="Escriba la pregunta de forma breve" required/>
                                 <p ref={TituloError} className={styles.errorTi}><span className={styles.x}>X</span> Ingrese el Titulo de la Pregunta</p>
                                 <div className={styles.materias}>
                                     <select ref={SelectError} className={styles.Select} value={selectedValue} onChange={handleSelectChange}>
