@@ -9,12 +9,12 @@ import { doc, setDoc } from "firebase/firestore";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  apiKey: "AIzaSyCvkSJgIRWNGMa6JSNikG79I-PKJz3A8KI",
+  authDomain: "tecoverflow-71224.firebaseapp.com",
+  projectId: "tecoverflow-71224",
+  storageBucket:"tecoverflow-71224.appspot.com",
+  messagingSenderId: "714621120634",
+  appId: "1:714621120634:web:a339b3e20772bbc7c84bc3",
   measurementId: "G-ZKK94FXSMJ"
 };
 
