@@ -143,12 +143,14 @@ export default function PostQuestion() {
                 </header>
                 <div className={styles.MainContainer}>
                     <div className={styles.LeftColumn}>
-                        <div className={styles.BackButton}>
-                            <Link href='/homepage'>
-                                <Image src={backArrow} alt='Back Arrow'/>
-                            </Link>
-                            <p className={styles.ButtonText}>Volver</p>
-                        </div>
+                        <Link href='/homepage'>
+                            <div className={styles.BackButton}>
+                                
+                                    <Image src={backArrow} alt='Back Arrow'/>
+                                
+                                <p className={styles.ButtonText}>Volver</p>
+                            </div>
+                        </Link>
                     </div>
                     <div className={styles.RightColumn}>
                         <div className={styles.DetailsContainer}>

@@ -23,17 +23,15 @@ export default function Homepage() {
         setPreguntas(response.data.preguntas);
     }   
     useEffect(() => {
+        requestPorfile();
+    }, []);
+    useEffect(() => {
         displayQuestions();
     }, []);
-
     const requestPorfile = async () => {
         const response = await axios.get('/api/auth/getPorfile')
         setUser(response.data) ;
     }
-    useEffect(() => {
-        requestPorfile();
-    }, []);
-
     useEffect(() => {
         console.log(preguntas)
         requestPorfile();

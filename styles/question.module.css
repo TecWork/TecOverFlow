@@ -143,6 +143,7 @@
   padding: 5px 10px 5px 10px;
   border-radius: 5px;
   border-left: 3px solid #028E3A;
+  width: 20vh;
 }
 
 .published{
@@ -258,6 +259,9 @@
 }
 .aEdit{
   display: flex;
+}
+.aEdit :hover{
+  cursor: pointer;
 }
 .aEditD{
   display: none;
