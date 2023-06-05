@@ -179,13 +179,19 @@ export default function Homepage() {
                             );
                             })
                             .map((pregunta) => (
-                                <a key={pregunta.id} href={`/questionpage?id=${pregunta.id}&materia=${pregunta.materia}&titulo=${pregunta.titulo}&creador=${pregunta.nombreUsuario}`}>
+                                <a key={pregunta.id} href={`/questionpage?id=${pregunta.id}&materia=${pregunta.materia}&titulo=${pregunta.titulo}&creador=${pregunta.nombreUsuario}&photo=${pregunta.photoURL}`}>
                                     <div key={pregunta.id} className={styles.pregunta}>
-                                        <p className={styles.respuestas}>0 Respuestas</p>
+                                        <p className={styles.respuestas}>{pregunta.cantRespuestas} Respuestas</p>
                                         <div className={styles.preguntainfo}>
                                             <h2 className={styles.titulo}>{pregunta.titulo}</h2>
                                             <p className={styles.materia}>{pregunta.materia}</p>
                                         </div>
+                                        <div >
+                                            <img className={styles.questionPhoto} src={pregunta.photoURL}></img>
+                                        </div>
+                                        <div className={styles.questionDetails}>
+                                            <p className={styles.nombre}>{pregunta.nombreUsuario}</p>
+                                        </div> 
                                     </div>
                                 </a>
                             ))}
