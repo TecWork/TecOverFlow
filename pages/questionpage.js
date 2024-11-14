@@ -232,7 +232,6 @@ export default function QuestionPage() {
                             <div className={styles.QuestionDetails}>
                                 <p className={styles.responses}>{cantRespuestas} respuestas</p> {/* Esto se debe cambiar por una consulta al back */}
                                 <p className={styles.materia}>{materia}</p> {/* Esto se debe cambiar por una consulta al back */}
-                                <p className={styles.published}>Publicado hace 2 horas</p> {/* Esto se debe cambiar por una consulta al back */}
                             </div>
                         </div>
                         <div className={styles.QuestionContainer}>

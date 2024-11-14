@@ -80,10 +80,6 @@ export default function Home() {
               <h3 className=' text-2xl text-white'>Sobre nosotros</h3>
               <p className=' text-justify p bg-'>Somos un grupo de estudiantes de la carrera de Ingeniería en Informatica del Tecnológico de Colima, que se encarga de desarrollar una plataforma para la comunidad estudiantil de la universidad, en la cual se puedan resolver dudas y compartir conocimiento.</p>
             </div>
-            <div className={styles.lorem}>
-              <h3 className=' text-2xl text-white'>Lorem</h3>
-              <p className=" text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae quas, ipsum numquam cupiditate mollitia rerum unde repellat impedit error sapiente debitis dignissimos iste, voluptates ipsam, inventore voluptas id doloribus quam sint dolores voluptate soluta quo ad consequatur. Tempora qui itaque optio atque unde labore expedita velit vel, dolores, aperiam autem.</p>
-            </div>
           </div>
         </footer>
       </main>
