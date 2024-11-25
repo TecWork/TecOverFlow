@@ -143,6 +143,7 @@ export default function Homepage() {
                                         <option value="POO">POO</option>
                                         <option value="Base de datos">Base de datos</option>
                                         <option value="Topico de Redes">Topico de Redes</option>
+                                        <option value="General">General</option>
                                     </select>
                                 </div>
                                 <p onClick={handleClick} className={isActiveButton1 ? styles.activeFilter : styles.filtros_todas} id="todas">Todas</p>

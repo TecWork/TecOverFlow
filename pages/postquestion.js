@@ -177,6 +177,9 @@ export default function PostQuestion() {
                                         <option value="Topico de Redes" select>Topico de Redes</option>
                                         <option value="Desarrollo de aplicaciones web">Desarrollo de aplicaciones web</option>
                                         <option value="Base de datos">Base de datos</option>.
+                                        <option value="Sistemas operativos">Sistemas operativos</option>
+                                        <option value="POO">POO</option>
+                                        <option value="General">General</option>
                                     </select>
                                     <p ref={MateriaError} className={styles.errorTi}><span className={styles.x}>X</span> Ingrese la materia</p>
                                 </div>
