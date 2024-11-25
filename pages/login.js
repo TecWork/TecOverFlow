@@ -31,6 +31,7 @@ export default function Login() {
         } else {
             console.log('Acceso denegado: dominio no permitido');
             // Aquí puedes mostrar un mensaje de error al usuario
+            alert("Solo los correos de dominio @colima.tecnm.mx están permitidos.");
             setIsLoggedIn(false);
         }
     };
