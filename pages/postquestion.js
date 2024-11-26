@@ -173,12 +173,15 @@ export default function PostQuestion() {
                                 <p ref={TituloError} className={styles.errorTi}><span className={styles.x}>X</span> Ingrese el Titulo de la Pregunta</p>
                                 <div className={styles.materias}>
                                     <select ref={SelectError} className={styles.Select} value={selectedValue} onChange={handleSelectChange}>
-                                        <option value="" disabled selected>Selecciona una materia</option>
-                                        <option value="Topico de Redes" select>Topico de Redes</option>
-                                        <option value="Desarrollo de aplicaciones web">Desarrollo de aplicaciones web</option>
-                                        <option value="Base de datos">Base de datos</option>.
-                                        <option value="Sistemas operativos">Sistemas operativos</option>
-                                        <option value="POO">POO</option>
+                                        <option value="" disabled selected>Selecciona un tema</option>
+                                        <option value="Informatica">Informatica</option>
+                                        <option value="Sistemas">Sistemas</option>
+                                        <option value="Gestión">Gestión</option>
+                                        <option value="Arquitectura">Arquitectura</option>
+                                        <option value="Administración">Administración</option>
+                                        <option value="Ambiental">Ambiental</option>
+                                        <option value="Industrial">Industrial</option>
+                                        <option value="Mecatronica">Mecatronica</option>
                                         <option value="General">General</option>
                                     </select>
                                     <p ref={MateriaError} className={styles.errorTi}><span className={styles.x}>X</span> Ingrese la materia</p>

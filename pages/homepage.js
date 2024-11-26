@@ -136,13 +136,16 @@ export default function Homepage() {
                                     <select className={styles.filtros_container_filtro_select}
                                     value={selectedSubject}
                                     onChange={handleSelectChange}>
-                                        <option disabled selected>Selecciona una materia</option>
-                                        <option value="">Todas las materias</option>
-                                        <option value="Desarrollo de aplicaciones web">DAW</option>
-                                        <option value="Sistemas operativos">Sistemas operativos</option>
-                                        <option value="POO">POO</option>
-                                        <option value="Base de datos">Base de datos</option>
-                                        <option value="Topico de Redes">Topico de Redes</option>
+                                        <option disabled selected>Selecciona un tema</option>
+                                        <option value="">Todos los temas</option>
+                                        <option value="Informatica">Informatica</option>
+                                        <option value="Sistemas">Sistemas</option>
+                                        <option value="Gestión">Gestión</option>
+                                        <option value="Arquitectura">Arquitectura</option>
+                                        <option value="Administración">Administración</option>
+                                        <option value="Ambiental">Ambiental</option>
+                                        <option value="Industrial">Industrial</option>
+                                        <option value="Mecatronica">Mecatronica</option>
                                         <option value="General">General</option>
                                     </select>
                                 </div>
