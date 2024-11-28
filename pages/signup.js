@@ -9,31 +9,20 @@ import googlelogo from "/public/googlelog.svg";
 import React, { useState, useEffect } from 'react';
 import { auth } from '../firebase';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 
 export default function SignUp() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = useAuthState(auth);
   const googleAuth = new GoogleAuthProvider();
   const router = useRouter();
-  const allowedDomain = "@colima.tecnm.mx";
 
   const signup = async () => {
     try {
       const result = await signInWithPopup(auth, googleAuth);
-      const email = result.user.email;
-      
-      // Verificar que el correo termine con el dominio permitido
-      if (email.endsWith(allowedDomain)) {
         console.log('sesion iniciada');
         perfil(result.user);
         setIsLoggedIn(true);
-      } else {
-        alert("Solo los correos de dominio @colima.tecnm.mx están permitidos.");
-        await auth.signOut(); // Cierra la sesión si el dominio no coincide
-      }
     } catch (error) {
       console.error("Error al iniciar sesión:", error);
     }

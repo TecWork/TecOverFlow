@@ -18,22 +18,11 @@ export default function Login() {
     const [user, setUser] = useAuthState(auth);
     const googleAuth = new GoogleAuthProvider();
     const router = useRouter();
-    const allowedDomain = "@colima.tecnm.mx"; // Reemplaza con el dominio permitido
 
     const login = async () => {
         const result = await signInWithPopup(auth, googleAuth);
-        const userEmail = result.user.email;
-
-        if (userEmail.endsWith(allowedDomain)) {
-            console.log('Sesión iniciada');
-            perfil(result.user);
-            setIsLoggedIn(true);
-        } else {
-            console.log('Acceso denegado: dominio no permitido');
-            // Aquí puedes mostrar un mensaje de error al usuario
-            alert("Solo los correos de dominio @colima.tecnm.mx están permitidos.");
-            setIsLoggedIn(false);
-        }
+        perfil(result.user);
+        setIsLoggedIn(true);
     };
 
     const perfil = async (userData) => {
